@@ -3,6 +3,7 @@ import { Form, useForm } from "react-hook-form";
 import FormInput from "./FormInput";
 import Doctor from "./FormRow";
 import FormRow from "./FormRow";
+import Button from "../../ui/Button";
 const specializations = [
   "Cardiology",
   "Dermatology",
@@ -217,13 +218,17 @@ function DoctorRegisterForm() {
             )}
           </div>
         )}
-        <button
+        {/* <button
           type="submit"
           className="bg-[var(--main-color)] p-2.5 rounded-[10px] w-full cursor-pointer text-white font-bold transition-colors duration-500  hover:bg-[var(--main-lite-color)]"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Forwarding..." : "Upload Files"}
-        </button>
+        </button> */}
+
+        <Button type="submit" className="w-full p-2.5" disabled={isSubmitting}>
+          {isSubmitting ? "Forwarding..." : "Upload Files"}
+        </Button>
       </form>
     </div>
   );
