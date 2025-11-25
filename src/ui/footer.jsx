@@ -8,11 +8,11 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-teal-800 text-white py-12 px-6">
+    <footer className="bg-[var(--main-lite-color)] text-white py-12 px-6">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-0">
         <div className="md:col-span-2">
           <h2 className="text-xl font-semibold mb-3">Healthcare</h2>
-          <p className="text-sm text-gray-300">
+          <p className="text-sm ">
             Copyright © 2026 BRIX Templates
             <br /> All Rights Reserved
           </p>
@@ -53,21 +53,55 @@ const Footer = () => {
 
         <div>
           <h3 className="font-semibold mb-4">Follow us</h3>
-          <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <FaFacebookF /> <span>Facebook</span>
+          <div className="flex flex-col gap-3">
+            {/* Instagram */}
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <span className="bg-white p-2 rounded-full">
+                <FaInstagram className="text-black w-5 h-5" />
+              </span>
+              <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                Instagram
+              </span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaTwitter /> <span>Twitter</span>
+
+            {/* Facebook */}
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <span className="bg-white p-2 rounded-full">
+                <FaFacebookF className="text-black w-5 h-5" />
+              </span>
+              <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                Facebook
+              </span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaInstagram /> <span>Instagram</span>
+
+            {/* Twitter */}
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <span className="bg-white p-2 rounded-full">
+                <FaTwitter className="text-black w-5 h-5" />
+              </span>
+              <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                Twitter
+              </span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaLinkedinIn /> <span>LinkedIn</span>
+
+            {/* LinkedIn */}
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <span className="bg-white p-2 rounded-full">
+                <FaLinkedinIn className="text-black w-5 h-5" />
+              </span>
+              <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                LinkedIn
+              </span>
             </div>
-            <div className="flex items-center gap-3">
-              <FaYoutube /> <span>YouTube</span>
+
+            {/* YouTube */}
+            <div className="flex items-center gap-2 group cursor-pointer">
+              <span className="bg-white p-2 rounded-full">
+                <FaYoutube className="text-black w-5 h-5" />
+              </span>
+              <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                YouTube
+              </span>
             </div>
           </div>
         </div>
