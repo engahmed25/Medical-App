@@ -147,7 +147,7 @@ function DoctorRegisterForm() {
             validation={{ required: "Clinic Address is required" }}
           />
           {/* <FormInput
-            label="Sart Time"
+            label="Start Time"
             name="startTime"
             type="time"
             placeholder="Start Time"

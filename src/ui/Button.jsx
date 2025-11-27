@@ -1,4 +1,5 @@
 function Button({
+  type,
   children,
   onClick,
   disabled,
@@ -8,6 +9,7 @@ function Button({
 }) {
   return (
     <button
+      type={type}
       onClick={onClick}
       disabled={disabled}
       className={`${className} bg-[var(--main-color)] text-white font-bold rounded-[var(--main-radius)] ${
