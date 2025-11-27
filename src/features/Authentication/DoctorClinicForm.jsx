@@ -142,7 +142,7 @@ function DoctorClinicForm() {
         {/* SUBMIT */}
         <Button
           type="submit"
-          className="w-full p-2.5 mt-2.5 bg-white !text-black border border-[var(--main-color)] hover:bg-[var(--main-color)] hover:!text-white"
+          className="w-full p-2.5 mt-2.5 bg-white text-black! border border-(--main-color) hover:bg-(--main-color) hover:text-white!"
         >
           Submit
         </Button>
