@@ -3,7 +3,9 @@ import AppLayout from "./ui/AppLayout.jsx";
 import Home from "./ui/Home.jsx";
 import Register from "./pages/Register.jsx";
 import DoctorRegisterForm from "./features/Authentication/DoctorRegisterForm.jsx";
-
+import DoctorUploadFilesForm from "./features/Authentication/DoctorUploadFilesForm.jsx";
+import DoctorRegisterWizard from "./features/Authentication/DoctorRegisterWizard.jsx";
+import PatientRegisterForm from "./features/Authentication/PatientRegisterForm.jsx";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -21,7 +23,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/register/doctors",
-    element: <DoctorRegisterForm />,
+    element: <DoctorRegisterWizard />,
+  },
+
+  {
+    path: "/register/patients",
+    element: <PatientRegisterForm />,
   },
 ]);
 
