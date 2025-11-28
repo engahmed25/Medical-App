@@ -6,6 +6,7 @@ import FormRow from "./FormRow";
 import Button from "../../ui/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Select from "./Select";
+import { useSignup } from "./useSignUp";
 const specializations = [
   "Cardiology",
   "Dermatology",
@@ -35,18 +36,20 @@ function DoctorRegisterForm({ onNext }) {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const { mutateAsync: signup, isLoading } = useSignup();
+
   //! this watch comes from react hook form to watch the specialization field
   const selectedSpecialization = watch("specialization");
 
-  const onSubmit = async (data) => {
+  async function onSubmit(data) {
     try {
-      console.log("Register data:", data);
-      // TODO: integrate with auth API (e.g., call register service)
+      const res = await signup(data);
+      console.log("Doctor registered:", res);
       onNext();
-    } catch (err) {
-      console.error(err);
+    } catch (error) {
+      console.error("Registration failed:", error);
     }
-  };
+  }
 
   return (
     <div className="w-full h-[100vh] flex items-center justify-center flex-col">
@@ -67,6 +70,16 @@ function DoctorRegisterForm({ onNext }) {
             error={errors.firstName}
             validation={{ required: "First name is required" }}
           />
+          <FormInput
+            label="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            register={register}
+            error={errors.username}
+            validation={{ required: "Username is required" }}
+          />
+
           <FormInput
             label="Last Name"
             name="lastName"

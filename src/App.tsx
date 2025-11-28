@@ -7,7 +7,12 @@ import DoctorUploadFilesForm from "./features/Authentication/DoctorUploadFilesFo
 import DoctorRegisterWizard from "./features/Authentication/DoctorRegisterWizard.jsx";
 import PatientRegisterForm from "./features/Authentication/PatientRegisterForm.jsx";
 import PatientRegisterFormWizard from "./features/Authentication/PatientRegisterFormWizard.jsx";
+import { QueryClient } from "@tanstack/query-core";
+import { QueryClientProvider } from "@tanstack/react-query";
 import AllDoctors from "./pages/AllDoctors.jsx";
+import { Toaster } from "react-hot-toast";
+
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -39,7 +44,15 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <QueryClientProvider client={queryClient}>
+        {" "}
+        <RouterProvider router={router} />
+      </QueryClientProvider>
+      <Toaster position="top-center" />
+    </>
+  );
 }
 
 export default App;
