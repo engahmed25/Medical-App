@@ -149,6 +149,15 @@ function DoctorRegisterForm({ onNext }) {
             error={errors.clinicAddress}
             validation={{ required: "Clinic Address is required" }}
           />
+          {/* <FormInput
+            label="Start Time"
+            name="startTime"
+            type="time"
+            placeholder="Start Time"
+            register={register}
+            error={errors.startTime}
+            validation={{ required: "Start time is required" }}
+          />
 
           <FormInput
             label="Medical License Number"
@@ -161,6 +170,7 @@ function DoctorRegisterForm({ onNext }) {
           />
         </FormRow>
         {/* we will make it combo box as a feature */}
+        </FormRow>
         {/* Specialization Select */}
         <Select
           register={register}
