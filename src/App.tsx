@@ -6,6 +6,8 @@ import DoctorRegisterForm from "./features/Authentication/DoctorRegisterForm.jsx
 import DoctorUploadFilesForm from "./features/Authentication/DoctorUploadFilesForm.jsx";
 import DoctorRegisterWizard from "./features/Authentication/DoctorRegisterWizard.jsx";
 import PatientRegisterForm from "./features/Authentication/PatientRegisterForm.jsx";
+import PatientRegisterFormWizard from "./features/Authentication/PatientRegisterFormWizard.jsx";
+import AllDoctors from "./pages/AllDoctors.jsx";
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -13,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/doctors",
+        element: <AllDoctors />,
       },
     ],
   },
@@ -28,7 +34,7 @@ const router = createBrowserRouter([
 
   {
     path: "/register/patients",
-    element: <PatientRegisterForm />,
+    element: <PatientRegisterFormWizard />,
   },
 ]);
 

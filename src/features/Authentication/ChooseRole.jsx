@@ -10,7 +10,7 @@ function ChooseRole() {
     if (chooseRole === "doctor") {
       navigate("/register/doctors?step=1");
     } else if (chooseRole === "patient") {
-      navigate("/register/patients");
+      navigate("/register/patients?step=1");
     }
   }
 
