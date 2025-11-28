@@ -1,3 +1,4 @@
+import DrInfo from "../features/Appointments/DrInfo";
 import DrCardList from "./drCardSpeciallity/DrCardList";
 
 function Home() {
@@ -5,6 +6,7 @@ function Home() {
     <>
       <div>Home</div>
       <DrCardList />
+      <DrInfo />
     </>
   );
 }
