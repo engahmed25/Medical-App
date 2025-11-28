@@ -59,12 +59,12 @@ const Footer = () => {
           {/* Follow Us */}
           <div>
             <h3 className="font-semibold mb-4">Follow us</h3>
-            <div className="flex flex-col gap-3 items-center md:items-start">
+            <div className="flex flex-col gap-2 items-start ">
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
                   <FaInstagram className="text-black w-5 h-5" />
                 </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Instagram
                 </span>
               </div>
@@ -73,7 +73,7 @@ const Footer = () => {
                 <span className="bg-white p-2 rounded-full">
                   <FaFacebookF className="text-black w-5 h-5" />
                 </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Facebook
                 </span>
               </div>
@@ -82,7 +82,7 @@ const Footer = () => {
                 <span className="bg-white p-2 rounded-full">
                   <FaTwitter className="text-black w-5 h-5" />
                 </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Twitter
                 </span>
               </div>
@@ -91,7 +91,7 @@ const Footer = () => {
                 <span className="bg-white p-2 rounded-full">
                   <FaLinkedinIn className="text-black w-5 h-5" />
                 </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   LinkedIn
                 </span>
               </div>
@@ -100,7 +100,7 @@ const Footer = () => {
                 <span className="bg-white p-2 rounded-full">
                   <FaYoutube className="text-black w-5 h-5" />
                 </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
+                <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   YouTube
                 </span>
               </div>
