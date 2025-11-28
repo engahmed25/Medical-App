@@ -17,6 +17,7 @@ function PatientRegisterForm({ onNext }) {
     try {
       console.log("Register data:", data);
       // TODO: integrate with auth API (e.g., call register service)
+      onNext();
     } catch (err) {
       console.error(err);
     }
@@ -25,10 +26,10 @@ function PatientRegisterForm({ onNext }) {
   return (
     <div className="w-full h-[100vh] flex items-center justify-center flex-col">
       <h2 className="mb-5 flex items-center justify-center font-bold text-3xl">
-        WELCOME PATIENT
+        WELCOME PATIENT😷
       </h2>
       <form
-        className="shadow-[0px_5px_15px_RGBA(0,0,0,0.35)] p-12 rounded-2xl h-[65%] overflow-auto"
+        className="shadow-[0px_5px_15px_RGBA(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
         <FormRow>
@@ -106,13 +107,21 @@ function PatientRegisterForm({ onNext }) {
                 value: 0,
                 message: "Emergency Contact Number cannot be negative",
               },
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: "Invalid email address",
-              },
             }}
           />
         </FormRow>
+        <FormInput
+          label="Reason for seeing doctor"
+          name="reasonForSeeingDoctor"
+          type="text"
+          placeholder="Reason for seeing doctor"
+          register={register}
+          error={errors.reasonForSeeingDoctor}
+          validation={{
+            required: "Reason for seeing doctor is required",
+          }}
+          className="mb-4"
+        />
         <Select
           register={register}
           errors={errors}
@@ -122,8 +131,8 @@ function PatientRegisterForm({ onNext }) {
           name="gender"
           validation={{ required: "Gender is required" }}
         />
-        <Button type="submit" className="w-full p-2.5" disabled={isSubmitting}>
-          {isSubmitting ? "Registering..." : "Register"}
+        <Button type="submit" className="w-full p-2.5 " disabled={isSubmitting}>
+          {isSubmitting ? "Forwarding..." : "Medical History"}
         </Button>
       </form>
     </div>

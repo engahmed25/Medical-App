@@ -4,7 +4,7 @@ import Search from "./Search";
 function AppLayout() {
   return (
     <div>
-      <h1>App Layout</h1>
+      <h1 className="text-3xl font-bold ">App Layout</h1>
       <main>
         <Outlet />
         <Search />

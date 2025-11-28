@@ -29,7 +29,7 @@ function DoctorUploadFilesForm({ onNext }) {
         UPLOAD YOUR FILES 📁
       </h2>
       <form
-        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[80%] overflow-auto "
+        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto "
         onSubmit={handleSubmit(onSubmit)}
       >
         {/* ID Proof & Medical License */}
