@@ -10,6 +10,7 @@ import PatientRegisterFormWizard from "./features/Authentication/PatientRegister
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import AllDoctors from "./pages/AllDoctors.jsx";
+import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
   {
     path: "/register/patients",
     element: <PatientRegisterFormWizard />,
+  },
+  {
+    path: "/patient-dashboard",
+    element: <PatientDashboard />,
   },
 ]);
 
