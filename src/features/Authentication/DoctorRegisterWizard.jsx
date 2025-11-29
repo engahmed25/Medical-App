@@ -1,0 +1,23 @@
+import React from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import DoctorRegisterForm from "./DoctorRegisterForm";
+import DoctorUploadFilesForm from "./DoctorUploadFilesForm";
+
+function DoctorRegisterWizard() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const step = parseInt(searchParams.get("step") || "1");
+
+  const goToNextStep = () => {
+    setSearchParams({ step: step + 1 });
+  };
+
+  return (
+    <>
+      {step === 1 && <DoctorRegisterForm onNext={goToNextStep} />}
+      {step === 2 && <DoctorUploadFilesForm onNext={goToNextStep} />}
+    </>
+  );
+}
+
+export default DoctorRegisterWizard;

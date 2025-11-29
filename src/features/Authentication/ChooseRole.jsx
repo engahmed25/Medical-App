@@ -1,9 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../ui/Button";
 
 function ChooseRole() {
   const [chooseRole, setChooseRole] = useState(null);
+  const navigate = useNavigate();
+
+  function handleRegister() {
+    if (chooseRole === "doctor") {
+      navigate("/register/doctors?step=1");
+    } else if (chooseRole === "patient") {
+      navigate("/register/patients?step=1");
+    }
+  }
 
   return (
     <div className=" flex flex-col items-center justify-center min-h-screen gap-6">
@@ -52,7 +61,7 @@ function ChooseRole() {
           withHover={chooseRole !== null}
           className={`py-4 px-10 mb-2`}
           disabled={chooseRole === null}
-          onClick={() => {}}
+          onClick={handleRegister}
         >
           {chooseRole === null
             ? "Create Account"
