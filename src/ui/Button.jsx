@@ -16,7 +16,7 @@ function Button({
         withTransition
           ? "transition-colors duration-500 cursor-pointer"
           : "bg-gray-400 cursor-not-allowed"
-      } ${withHover ? "hover:bg-[var(--main-lite-color)]" : ""} `}
+      } ${withHover ? "hover:scale-110 hover:bg-[var(--main-lite-color)]" : ""} `}
     >
       {children}
     </button>
