@@ -2,47 +2,57 @@ import { FiInfo } from "react-icons/fi";
 import { MdOutlineVerified } from "react-icons/md";
 import DrImg from "./../../assets/DrInfoImgs/DrImg.png";
 
+const doctorInfo = {
+  img: DrImg,
+  name: "Dr Name",
+  speciality: "Dermatologist",
+  experience: "2",
+  about:
+    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eligendi distinctio exercitationem? Et illo deserunt sit incidunt atque cumque libero similique aut, adipisci eaque dolorum veritatis doloribus nostrum neque blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatem enim maxime beatae cumque ex?",
+  fee: 50,
+};
+
 function DrInfo() {
   return (
-    <section className="flex flex-col md:flex-row gap-6 m-4 bg-white p-6 rounded-xl shadow-md">
-      {/* Doctor Image */}
-      <div className="rounded-(--main-radius) shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-3 flex items-center justify-center w-full md:w-auto">
-        <img src={DrImg} alt="" className="rounded-(--main-radius)" />
+    <section className="flex flex-col md:flex-row gap-6 m-4 bg-white p-6 rounded-(--main-radius) border border-gray-300">
+      <div className="rounded-(--main-radius) overflow-hidden  shadow-[0px_5px_15px_rgba(0,0,0,0.35)]">
+        <img
+          src={doctorInfo.img}
+          alt="Doctor"
+          className="w-full h-auto max-w-sm object-fill"
+        />
       </div>
 
-      {/* Doctor Info */}
-      <div className="border border-gray-300 shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-5 rounded-(--main-radius) w-full">
-        {/* Name + verified icon */}
+      <div className="flex-1 border border-gray-200 p-6 rounded-(--main-radius) bg-gray-50 shadow-[0px_5px_15px_rgba(0,0,0,0.35)]">
         <div className="flex items-center gap-2">
-          <h1 className="font-bold text-2xl md:text-3xl text-gray-800">
-            Dr Name
+          <h1 className="font-bold text-2xl md:text-3xl text-gray-900">
+            {doctorInfo.name}
           </h1>
-          <MdOutlineVerified className="text-blue-600 text-xl" />
+          <MdOutlineVerified className="text-blue-600 text-2xl" />
         </div>
 
-        {/* Speciality + years */}
-        <div className="flex items-center gap-2 mt-1">
-          <h2 className="text-gray-600 font-semibold">Speciality</h2>
-          <div className="border border-gray-400 rounded-2xl text-gray-500 text-xs px-2 py-1">
-            <span className="number-ex">2</span> years
-          </div>
+        <div className="flex items-center gap-3 mt-2">
+          <h2 className="text-gray-700 font-semibold">
+            {doctorInfo.speciality}
+          </h2>
+
+          <span className="border border-gray-400 rounded-2xl text-gray-600 text-xs px-3 py-1 bg-white shadow-sm">
+            <span>{doctorInfo.experience}</span> years
+          </span>
         </div>
 
-        {/* About */}
-        <div className="flex items-center gap-1 mt-4">
-          <h3 className="font-semibold text-gray-700">About</h3>
-          <FiInfo className="text-gray-500" />
+        <div className="flex items-center gap-2 mt-5">
+          <h3 className="font-semibold text-gray-800">About</h3>
+          <FiInfo className="text-gray-600" />
         </div>
 
-        <p className="text-gray-500 text-sm md:text-base mt-2 leading-relaxed">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-          voluptatem enim maxime beatae cumque ex? Blanditiis, consectetur
-          similique nobis veniam et, quaerat enim, laboriosam corrupti officiis.
+        <p className="text-gray-600 text-sm md:text-base mt-2 leading-relaxed">
+          {doctorInfo.about}
         </p>
 
-        <p className="mt-4 text-gray-700">
+        <p className="mt-5 text-gray-700 text-lg">
           Appointment Fee:
-          <span className="font-bold text-gray-900"> $50</span>
+          <span className="font-bold text-gray-900"> {doctorInfo.fee}</span>
         </p>
       </div>
     </section>
