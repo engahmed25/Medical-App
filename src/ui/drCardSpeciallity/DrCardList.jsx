@@ -17,8 +17,16 @@ function DrCardList() {
   });
 
   return (
-    <section
-      className="grid
+    <section>
+      <div className="flex flex-col  items-center ">
+        <h2 className="font-bold text-3xl">Find by Speciality</h2>
+        <p className=" text">
+          Simply browse through our extensive list of trusted doctors, schedule
+          your appointment hassle-free.
+        </p>
+      </div>
+      <div
+        className="grid
         grid-cols-2
         sm:grid-cols-3
         md:grid-cols-4
@@ -26,14 +34,15 @@ function DrCardList() {
         xl:grid-cols-6
         gap-4
         m-6"
-    >
-      {items.map((item, index) => (
-        <DrCardModel
-          key={index}
-          img={item.img}
-          drSpeciallityTitle={item.title}
-        />
-      ))}
+      >
+        {items.map((item, index) => (
+          <DrCardModel
+            key={index}
+            img={item.img}
+            drSpeciallityTitle={item.title}
+          />
+        ))}
+      </div>
     </section>
   );
 }
