@@ -1,17 +1,22 @@
 function DrCardModel({ img, drSpeciallityTitle }) {
+  const handleClick = () => {
+    const searchBydrSpeciallityTitle = drSpeciallityTitle.toLowerCase();
+    alert(searchBydrSpeciallityTitle);
+  };
   return (
     <div
-      className="border-2
-        border-blue-600 
-        flex flex-col 
-        items-center 
-        p-2 
-        shadow-[0px_5px_15px_rgba(0,0,0,0.35)]
-        rounded-(--main-radius)
-        transition-transform 
-        duration-300 
-        transform 
-        hover:scale-110"
+      onClick={handleClick}
+      className="border-2 
+      border-blue-600 
+      flex flex-col 
+      items-center 
+      p-2 
+      shadow-[0px_5px_15px_rgba(0,0,0,0.35)]
+      rounded-(--main-radius)
+      transition-transform 
+      duration-300 
+      transform 
+      hover:scale-110"
     >
       <img
         src={img}
