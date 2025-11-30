@@ -1,23 +1,15 @@
 import { Outlet } from "react-router-dom";
-import Footer from "./footer";
-import Search from "./Search";
-import Navbar from "./Navbar";
+import Header from "./Header";
+import Footer from "./Footer";
 
-import DoctorCard from "./DoctorCard";
-import DoctorList from "./DoctorList";
 function AppLayout() {
   return (
     <div>
-      <Navbar/>
+      <Header />
       <main>
         <Outlet />
-        
-        <Search />
-        <DoctorCard name="John Doe" description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos." specialization="Cardiology" price="100" status="Available" image="https://via.placeholder.com/150" />
-        <DoctorList />
       </main>
       <Footer />
-      
     </div>
   );
 }

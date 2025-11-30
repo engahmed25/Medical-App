@@ -9,11 +9,14 @@ import DoctorUploadFilesForm from "./features/Authentication/DoctorUploadFilesFo
 import DoctorRegisterWizard from "./features/Authentication/DoctorRegisterWizard.jsx";
 import PatientRegisterForm from "./features/Authentication/PatientRegisterForm.jsx";
 import PatientRegisterFormWizard from "./features/Authentication/PatientRegisterFormWizard.jsx";
+import ContactUs from "./pages/ContactUs.jsx";
+import DrInfo from "./features/Appointments/DrInfo.jsx";
 import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
+import DoctorCard from "./ui/DoctorCard.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -28,9 +31,16 @@ const router = createBrowserRouter([
         path: "/doctors",
         element: <AllDoctors />,
       },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
+      },
     ],
   },
-
+  {
+    path: "/patient/dashboard",
+    element: <PatientDashboard />,
+  },
   {
     path: "/register",
     element: <Register />,
@@ -39,10 +49,7 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
-  {
-    path: "/DoctorClinicInfo",
-    element: <DoctorClinicInfo />,
-  },
+
   {
     path: "/register/doctors",
     element: <DoctorRegisterWizard />,
@@ -53,8 +60,12 @@ const router = createBrowserRouter([
     element: <PatientRegisterFormWizard />,
   },
   {
-    path: "/patient-dashboard",
+    path: "/patient/dashboard",
     element: <PatientDashboard />,
+  },
+  {
+    path: "/doctor/info",
+    element: <DrInfo />,
   },
 ]);
 

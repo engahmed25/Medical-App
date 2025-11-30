@@ -13,7 +13,7 @@ const Days = [
   "Saturday",
 ];
 
-function DoctorClinicForm() {
+function DoctorClinicForm({ onNext }) {
   const {
     register,
     handleSubmit,
@@ -29,6 +29,7 @@ function DoctorClinicForm() {
   // -----------------------------
   const onSubmit = (data) => {
     console.log("Form submitted:", data);
+    onNext();
   };
 
   // -----------------------------

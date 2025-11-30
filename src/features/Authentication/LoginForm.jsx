@@ -103,13 +103,15 @@ function LoginForm() {
             Don't have and MAIO account?
           </article>
 
-          <Button
-            type="button"
-            onClick={handleSignUp}
-            className="w-full p-2.5 mt-2.5 bg-white text-black! font-semibold!  border border-(--main-color) hover:bg-(--main-color) hover:text-white!"
-          >
-            Sign Up
-          </Button>
+          <Link to="/register">
+            <Button
+              type="button"
+              onClick={handleSignUp}
+              className="w-full p-2.5 mt-2.5 bg-white text-black! font-semibold!  border border-(--main-color) hover:bg-(--main-color) hover:text-white!"
+            >
+              Sign Up
+            </Button>
+          </Link>
         </form>
       </div>
     </div>

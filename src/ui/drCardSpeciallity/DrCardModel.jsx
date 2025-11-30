@@ -6,8 +6,7 @@ function DrCardModel({ img, drSpeciallityTitle }) {
   return (
     <div
       onClick={handleClick}
-      className="border-2 
-      border-blue-600 
+      className=" cursor-pointer
       flex flex-col 
       items-center 
       p-2 

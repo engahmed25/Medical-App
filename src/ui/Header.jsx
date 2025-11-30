@@ -1,57 +1,89 @@
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import Button from "./Button";
-const Header = () => {
+import { Link } from "react-router-dom";
+
+export default function Header() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <header className="bg-[var(--backGround-color)] pt-8 pb-20 mb-0">
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 px-6">
-
-        {/* LEFT SIDE */}
-        <div className="flex flex-col justify-center">
-
-          {/* TITLE */}
-          <h1 className="text-4xl md:text-4xl font-extrabold text-[var(--main-lite-color)] leading-tight">
-            FEEL BETTER ABOUT<br />
-            <span className="block mt-2">FINDING HEALTHCARE</span>
-          </h1>
-
-          {/* DESCRIPTION */}
-          <p className="text-[var(--head-desc-color)] mt-6 leading-relaxed">
-            Doctors are one of the most important people in society. 
-            They are the sole reason our society is taking healthy 
-            and positive steps towards progress because the health 
-            of the body and mind is the reason behind the good work 
-            people put up towards development.
-          </p>
-
-          {/* BUTTONS */}
-          <div className="flex gap-8 mt-6 px-28 pl-0 max-w-xl">
-            <Button className="px-1 py-1">
-              Profiles for Every Doctor in America
-            </Button>
-
-            <Button className="px-1 py-1">
-              More Than 10 Million Patient Ratings
-            </Button>
+    <nav className="bg-[var(--backGround-color)] px-6 py-4">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <Link>
+          <div className="text-xl font-semibold flex items-center gap-1">
+            <img
+              src="/src/assets/navLogo/logo.png"
+              alt="logo"
+              className="w-12 md:w-12 rounded-xl object-cover"
+            />
+            <span className="text-[var(--main-lite-color)] text-2xl">
+              Medicare
+            </span>
           </div>
+        </Link>
 
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex items-center gap-10 text-[var(--main-lite-color)] font-bold">
+          <li
+            className="text-[var(--main-color)] font-bold
+transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
+          >
+            <Link to="/doctors">All Doctors</Link>
+          </li>
+          <li
+            className="text-[var(--main-color)] font-bold
+transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
+          >
+            {" "}
+            <Link to="#">Find a Hospital</Link>
+          </li>
+          <li
+            className="text-[var(--main-color)] font-bold
+transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
+          >
+            {" "}
+            <Link to="/contactus">Contact Us</Link>
+          </li>
+        </ul>
+
+        {/* Right Buttons (using your Button component) */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* <Link>Log in</Link> */}
+
+          {/* Using your custom Button component */}
+          <Link to="/register">
+            <Button className="px-4 py-1">Sign up</Button>
+          </Link>
         </div>
 
-        {/* RIGHT SIDE (IMAGES) */}
-        <div className="flex justify-center items-center gap-1 ">
-          <img 
-            src="/src/assets/headerPhoto/dr1.png" 
-            alt="doctor" 
-            className="w-56 md:w-64 rounded-xl object-cover"
-          />
-          <img 
-            src="/src/assets/headerPhoto/dr2.png"
-            alt="doctor"
-            className="w-56 md:w-64 rounded-xl object-cover"
-          />
-        </div>
-
+        {/* Mobile Hamburger */}
+        <button className="md:hidden" onClick={() => setOpen(!open)}>
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
-    </header>
+
+      {/* Mobile Dropdown */}
+      {open && (
+        <div className="md:hidden mt-4 space-y-4 bg-[var(--sec-color)] p-4 rounded-lg">
+          <ul className="flex flex-col gap-4 text-[var(--main-lite-color)] font-bold">
+            <li>
+              <Link href="#">All Doctors</Link>
+            </li>
+            <li>
+              <Link href="#">Find a Hospital</Link>
+            </li>
+            <li>
+              <Link href="#">Health A to Z</Link>
+            </li>
+          </ul>
+
+          <div className="flex flex-col gap-3 pt-3">
+            <Button>Log in</Button>
+            <Button>Sign up</Button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }
-
-export default Header;

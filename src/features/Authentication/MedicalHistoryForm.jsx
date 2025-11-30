@@ -4,6 +4,7 @@ import FormInput from "./FormInput";
 import Button from "../../ui/Button";
 import Select from "./Select";
 import Illnesses from "../../ui/Illnesses";
+import { useNavigate } from "react-router-dom";
 
 const illnesses = [
   "Diabetes",
@@ -23,13 +24,14 @@ function MedicalHistoryForm({ onNext }) {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const navigate = useNavigate();
   const selectedIllnesses = watch("illnesses");
 
   const onSubmit = async (data) => {
     try {
       console.log("Register data:", data);
       // TODO: integrate with auth API (e.g., call register service)
-      onNext();
+      navigate("/");
     } catch (err) {
       console.error(err);
     }

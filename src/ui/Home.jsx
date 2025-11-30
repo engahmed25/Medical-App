@@ -1,14 +1,15 @@
-import DrInfo from "../features/Appointments/DrInfo";
-import DrCardList from "./drCardSpeciallity/DrCardList";
-import Search from "./Search";
+import React from "react";
 import Header from "./Header";
+import Hero from "./Hero";
+import Search from "./Search";
+import DrCardList from "../ui/drCardSpeciallity/DrCardList";
 
 function Home() {
   return (
     <>
-      <div>Home</div>
+      <Hero />
+      <Search />
       <DrCardList />
-      <DrInfo />
     </>
   );
 }

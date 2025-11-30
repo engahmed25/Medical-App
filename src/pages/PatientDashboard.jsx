@@ -117,17 +117,15 @@ function PatientDashboard() {
 
   const sparkPath = heartRate
     .map((value, index) => {
-      const x =
-        (index / Math.max(heartRate.length - 1, 1)) * sparkWidth;
-      const y =
-        sparkHeight - ((value - minValue) / range) * sparkHeight;
+      const x = (index / Math.max(heartRate.length - 1, 1)) * sparkWidth;
+      const y = sparkHeight - ((value - minValue) / range) * sparkHeight;
       return `${index === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)}`;
     })
     .join(" ");
 
   return (
     <div className="min-h-screen bg-[#E8F0FF] text-[#0B1D4A] flex">
-      <aside className="w-72 bg-gradient-to-b from-[#0d3f9d] to-[#0b58d8] text-white p-6 flex flex-col gap-6 shadow-2xl">
+      <aside className="w-72 bg-gradient-to-b from-[var(--main-color)] to-[var(--main-lite-color)] text-white p-6 flex flex-col gap-6 shadow-2xl">
         <div className="flex items-center gap-3">
           <div className="h-12 w-12 rounded-2xl bg-white/15 border border-white/25 flex items-center justify-center text-xl font-semibold">
             AP
@@ -176,7 +174,8 @@ function PatientDashboard() {
               Patient Dashboard
             </h1>
             <p className="text-sm text-slate-600 mt-1">
-              Track your appointments, health insights, and quick actions in one place.
+              Track your appointments, health insights, and quick actions in one
+              place.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -292,9 +291,13 @@ function PatientDashboard() {
                           </p>
                         </div>
                         <span
-                          className={`px-3 py-1 text-xs font-semibold rounded-full ${statusClasses[appt.status]}`}
+                          className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                            statusClasses[appt.status]
+                          }`}
                         >
-                          {appt.status === "confirmed" ? "Confirmed" : "Pending"}
+                          {appt.status === "confirmed"
+                            ? "Confirmed"
+                            : "Pending"}
                         </span>
                       </div>
                       <div className="flex items-center justify-between mt-3 gap-4">
@@ -347,13 +350,33 @@ function PatientDashboard() {
                     preserveAspectRatio="none"
                   >
                     <defs>
-                      <linearGradient id="heartLine" x1="0" x2="1" y1="0" y2="0">
+                      <linearGradient
+                        id="heartLine"
+                        x1="0"
+                        x2="1"
+                        y1="0"
+                        y2="0"
+                      >
                         <stop offset="0%" stopColor="#0057FF" />
                         <stop offset="100%" stopColor="#7fb2ff" />
                       </linearGradient>
-                      <linearGradient id="heartFill" x1="0" x2="0" y1="0" y2="1">
-                        <stop offset="0%" stopColor="#0057FF" stopOpacity="0.22" />
-                        <stop offset="100%" stopColor="#0057FF" stopOpacity="0" />
+                      <linearGradient
+                        id="heartFill"
+                        x1="0"
+                        x2="0"
+                        y1="0"
+                        y2="1"
+                      >
+                        <stop
+                          offset="0%"
+                          stopColor="#0057FF"
+                          stopOpacity="0.22"
+                        />
+                        <stop
+                          offset="100%"
+                          stopColor="#0057FF"
+                          stopOpacity="0"
+                        />
                       </linearGradient>
                     </defs>
                     <path
@@ -394,7 +417,8 @@ function PatientDashboard() {
                           Medications
                         </p>
                         <p className="text-xs text-slate-500">
-                          Morning pills taken, evening dose scheduled at 8:00 PM.
+                          Morning pills taken, evening dose scheduled at 8:00
+                          PM.
                         </p>
                       </div>
                     </div>
@@ -407,7 +431,8 @@ function PatientDashboard() {
                           Doctor Notes
                         </p>
                         <p className="text-xs text-slate-500">
-                          Keep daily hydration above 2L and add light cardio twice a week.
+                          Keep daily hydration above 2L and add light cardio
+                          twice a week.
                         </p>
                       </div>
                     </div>
@@ -443,7 +468,9 @@ function PatientDashboard() {
 
             <div className="bg-white/90 border border-[#dfe7ff] rounded-2xl shadow-lg shadow-[#0057ff1a] p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Prescription Reminders</h3>
+                <h3 className="text-lg font-semibold">
+                  Prescription Reminders
+                </h3>
                 <button className="text-sm font-semibold text-[#0057FF] px-3 py-1.5 bg-[#E8F0FF] rounded-full">
                   Manage
                 </button>

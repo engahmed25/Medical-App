@@ -42,13 +42,14 @@ function DoctorRegisterForm({ onNext }) {
   const selectedSpecialization = watch("specialization");
 
   async function onSubmit(data) {
-    try {
-      const res = await signup(data);
-      console.log("Doctor registered:", res);
-      onNext();
-    } catch (error) {
-      console.error("Registration failed:", error);
-    }
+    // try {
+    //   const res = await signup(data);
+    //   console.log("Doctor registered:", res);
+    //   onNext();
+    // } catch (error) {
+    //   console.error("Registration failed:", error);
+    // }
+    onNext();
   }
 
   return (
@@ -69,15 +70,6 @@ function DoctorRegisterForm({ onNext }) {
             register={register}
             error={errors.firstName}
             validation={{ required: "First name is required" }}
-          />
-          <FormInput
-            label="username"
-            name="username"
-            type="text"
-            placeholder="Username"
-            register={register}
-            error={errors.username}
-            validation={{ required: "Username is required" }}
           />
 
           <FormInput
