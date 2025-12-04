@@ -8,7 +8,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[var(--main-lite-color)] text-white py-12 px-6 mt-12">
+    <footer className="bg-(--main-lite-color) text-white py-12 px-6 mt-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-10 md:gap-0">
         {/* Left Section */}
         <div className="md:col-span-2 text-center md:text-left">
@@ -62,7 +62,7 @@ const Footer = () => {
             <div className="flex flex-col gap-2 items-start ">
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-                  <FaInstagram className="text-[var(--main-color)] w-5 h-5" />
+                  <FaInstagram className="text-(--main-color) w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Instagram
@@ -71,7 +71,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-                  <FaFacebookF className="text-[var(--main-color)] w-5 h-5" />
+                  <FaFacebookF className="text-(--main-color) w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Facebook
@@ -80,7 +80,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-                  <FaTwitter className="text-[var(--main-color)] w-5 h-5" />
+                  <FaTwitter className="text-(--main-color) w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   Twitter
@@ -89,7 +89,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-                  <FaLinkedinIn className="text-[var(--main-color)] w-5 h-5" />
+                  <FaLinkedinIn className="text-(--main-color) w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   LinkedIn
@@ -98,7 +98,7 @@ const Footer = () => {
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-                  <FaYoutube className="text-[var(--main-color)] w-5 h-5" />
+                  <FaYoutube className="text-(--main-color) w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
                   YouTube

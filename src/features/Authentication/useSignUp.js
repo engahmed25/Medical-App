@@ -18,24 +18,27 @@ import { toast } from "react-hot-toast";
 //     return { signup, isLoading };
 // }
 
-
 //! we cahnge the above code to use mutateAsync instead of mutate to be able to use async/await syntax so that we can use the onNext()
 //! function after the signup is successful in the DoctorRegisterForm.jsx file so that we go to step 2 only after the signup is successfull
 //! without mutateAsync we cant use the onNext(); as the signup that we used in the onSubmit is async and onNext is sync so it will be called immediately and this doesn't work
 export function useSignup() {
-    const mutation = useMutation({
-        mutationFn: signupApi,
-        onSuccess: (data) => {
-            console.log("dataaaaaaaa", data);
-            toast.success(
-                "Account successfully created! Please verufy the new account from the user's email address."
-            );
-        }, onError: (error) => {
-            toast.error(error.response?.data?.message || "Failed to create account. Please try again.");
-        }
-    });
+  const mutation = useMutation({
+    mutationFn: signupApi,
+    onSuccess: (data) => {
+      console.log("dataaaaaaaa", data);
+      toast.success(
+        "Account successfully created! Please verufy the new account from the user's email address."
+      );
+    },
+    onError: (error) => {
+      toast.error(
+        error.response?.data?.message ||
+          "Failed to create account. Please try again."
+      );
+    },
+  });
 
-    return mutation;
+  return mutation;
 }
 
 /*
