@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Footer from "../ui/footer";
 import AppointmentSummary from "../features/paymentMethods/AppointmentSummary";
 import PaymentMethod from "../features/paymentMethods/PaymentMethod";
 import PaymentDetails from "../features/paymentMethods/PaymentDetails";
@@ -40,7 +39,6 @@ function PaymentPage() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
