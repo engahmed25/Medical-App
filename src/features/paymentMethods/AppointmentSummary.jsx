@@ -5,16 +5,16 @@ import {
   IoLocationOutline,
 } from "react-icons/io5";
 
-function AppointmentSummary() {
-  const appointmentInfo = {
-    drName: "Dr. Ahmed El Khatib",
-    speciality: "Cardiology",
-    date: "December 15, 2025",
-    time: "10:30 AM",
-    clinicName: "Mayo Clinic",
-    clinicLocation: "Maadi , Cairo, Egypt",
-    price: "850",
-  };
+function AppointmentSummary(props) {
+  // const appointmentInfo = {
+  //   drName: "Dr. Ahmed El Khatib",
+  //   speciality: "Cardiology",
+  //   date: "December 15, 2025",
+  //   time: "10:30 AM",
+  //   clinicName: "Mayo Clinic",
+  //   clinicLocation: "Maadi , Cairo, Egypt",
+  //   price: 850,
+  // };
 
   return (
     <div className="bg-white rounded-lg border border-gray-300 p-5">
@@ -27,8 +27,8 @@ function AppointmentSummary() {
       <div className="flex items-center gap-3 mb-5">
         <IoPerson className="w-5 h-5 text-blue-600" />
         <div>
-          <p className="font-medium text-gray-900">{appointmentInfo.drName}</p>
-          <p className="text-sm text-gray-500">{appointmentInfo.speciality}</p>
+          <p className="font-medium text-gray-900">{props.drName}</p>
+          <p className="text-sm text-gray-500">{props.speciality}</p>
         </div>
       </div>
 
@@ -36,11 +36,11 @@ function AppointmentSummary() {
       <div className="mb-5 space-y-2">
         <div className="flex items-center gap-2 text-gray-700">
           <IoCalendarOutline className="w-4 h-4" />
-          <span>{appointmentInfo.date}</span>
+          <span>{props.date}</span>
         </div>
         <div className="flex items-center gap-2 text-gray-700">
           <IoTimeOutline className="w-4 h-4" />
-          <span>{appointmentInfo.time}</span>
+          <span>{props.time}</span>
         </div>
       </div>
 
@@ -49,12 +49,8 @@ function AppointmentSummary() {
         <div className="flex items-start gap-2">
           <IoLocationOutline className="w-4 h-4 text-gray-500 mt-1" />
           <div>
-            <p className="font-medium text-gray-900">
-              {appointmentInfo.clinicName}
-            </p>
-            <p className="text-sm text-gray-600">
-              {appointmentInfo.clinicLocation}
-            </p>
+            <p className="font-medium text-gray-900">{props.clinicName}</p>
+            <p className="text-sm text-gray-600">{props.clinicLocation}</p>
           </div>
         </div>
       </div>
@@ -64,7 +60,7 @@ function AppointmentSummary() {
         <div className="flex justify-between items-center">
           <span className="font-bold text-gray-900">Total Amount</span>
           <span className="text-xl font-bold text-blue-600">
-            {appointmentInfo.price} EGP
+            {props.price} EGP
           </span>
         </div>
       </div>

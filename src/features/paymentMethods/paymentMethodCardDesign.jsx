@@ -11,11 +11,12 @@ function PaymentMethodCard({
   return (
     <button
       onClick={onClick}
-      className={`w-full p-4 sm:p-5 rounded-xl border-2 transition-all duration-200 text-left ${
-        isSelected
-          ? "border-blue-500 bg-blue-50"
-          : "border-gray-200 bg-white hover:border-gray-300"
-      }`}
+      className={`w-full p-4 sm:p-5 rounded-xl border-2  text-left 
+        transition-transform  duration-300 transform hover:scale-105 ${
+          isSelected
+            ? "border-blue-500 bg-blue-50"
+            : "border-gray-200 bg-white hover:border-gray-300"
+        }`}
     >
       <div className="flex items-center gap-3 sm:gap-4">
         {/* Icon */}

@@ -1,6 +1,11 @@
+import { useLocation } from "react-router-dom";
 import CardPaymentForm from "./CardPaymentForm";
 
-function PaymentDetails({ payMethod }) {
+function ConfirmPayment() {
+  const location = useLocation();
+  const { price, payMethod } = location.state;
+  console.log(payMethod + price);
+
   if (!payMethod) return null;
 
   if (payMethod === "value") {
@@ -34,7 +39,7 @@ function PaymentDetails({ payMethod }) {
   return null;
 }
 
-export default PaymentDetails;
+export default ConfirmPayment;
 
 // import CardPaymentForm from "./CardPaymentForm";
 

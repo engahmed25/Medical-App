@@ -18,6 +18,7 @@ import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
 import DoctorCard from "./ui/DoctorCard.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
+import ConfirmPayment from "./features/paymentMethods/ConfirmPayment.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
   {
     path: "/patient/payment",
     element: <PaymentPage />,
+  },
+  {
+    path: "/patient/payment/confirm-payment",
+    element: <ConfirmPayment />,
   },
   {
     path: "/doctor/info",

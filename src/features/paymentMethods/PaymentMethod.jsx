@@ -11,16 +11,16 @@ const paymentOptions = [
     badge: "Installments",
   },
   {
-    id: "cash",
-    icon: GiTakeMyMoney,
-    title: "Cash on Arrival",
-    subTitle: "Pay the fee directly at the clinic reception.",
-  },
-  {
     id: "debitCard",
     icon: FaCreditCard,
     title: "Credit/Debit Card",
     subTitle: "Visa, Mastercard, Meeza.",
+  },
+  {
+    id: "cash",
+    icon: GiTakeMyMoney,
+    title: "Cash on Arrival",
+    subTitle: "Pay the fee directly at the clinic reception.",
   },
 ];
 

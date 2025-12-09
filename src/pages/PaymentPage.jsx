@@ -1,13 +1,34 @@
 import { useState } from "react";
 import AppointmentSummary from "../features/paymentMethods/AppointmentSummary";
 import PaymentMethod from "../features/paymentMethods/PaymentMethod";
-import PaymentDetails from "../features/paymentMethods/PaymentDetails";
+import PaymentDetails from "../features/paymentMethods/ConfirmPayment";
 import PageHeader from "../features/paymentMethods/HeaderComponent";
 import PaymentHeader from "../features/paymentMethods/PaymentHeader";
 import SecurityMessage from "../features/paymentMethods/SecurityMessage";
+import { useNavigate } from "react-router-dom";
 
 function PaymentPage() {
   const [selectedMethod, setSelectedMethod] = useState("");
+
+  const appointmentInfo = {
+    drName: "Dr. Ahmed El Khatib",
+    speciality: "Cardiology",
+    date: "December 15, 2025",
+    time: "10:30 AM",
+    clinicName: "Mayo Clinic",
+    clinicLocation: "Maadi , Cairo, Egypt",
+    price: 850,
+  };
+  const navigate = useNavigate();
+  function onclick() {
+    if (!selectedMethod) return; // prevent navigation if no method selected
+    navigate("/patient/payment/confirm-payment", {
+      state: {
+        price: appointmentInfo.price,
+        payMethod: selectedMethod,
+      },
+    });
+  }
 
   return (
     <>
@@ -17,7 +38,15 @@ function PaymentPage() {
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <aside className="w-full lg:w-1/3">
-              <AppointmentSummary />
+              <AppointmentSummary
+                drName={appointmentInfo.drName}
+                speciality={appointmentInfo.speciality}
+                date={appointmentInfo.date}
+                time={appointmentInfo.time}
+                clinicName={appointmentInfo.clinicName}
+                clinicLocation={appointmentInfo.clinicLocation}
+                price={appointmentInfo.price}
+              />
             </aside>
 
             <main className="w-full lg:w-2/3">
@@ -30,10 +59,22 @@ function PaymentPage() {
                   onSelectMethod={setSelectedMethod}
                 />
 
-                {/* Payment Details (Form or Info) */}
-                <PaymentDetails payMethod={selectedMethod} />
+                <button
+                  onClick={onclick}
+                  className={` shadow-[0px_5px_15px_rgba(0,0,0,0.20)] rounded-(--main-radius) px-9 py-4 mt-5 w-full font-semibold
+                    ${
+                      selectedMethod
+                        ? " bg-blue-500 text-white"
+                        : " bg-white  border-gray-300"
+                    }`}
+                >
+                  Confirm Appointment ➡️
+                </button>
 
-                <SecurityMessage />
+                {/* Payment Details (Form or Info) */}
+                {/* <PaymentDetails payMethod={selectedMethod} /> */}
+
+                {/* <SecurityMessage /> */}
               </div>
             </main>
           </div>
