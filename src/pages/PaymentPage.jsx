@@ -1,10 +1,10 @@
 import { useState } from "react";
-import AppointmentSummary from "../features/paymentMethods/AppointmentSummary";
+import AppointmentSummary from "../features/paymentMethods/components/AppointmentSummary";
 import PaymentMethod from "../features/paymentMethods/PaymentMethod";
 import PaymentDetails from "../features/paymentMethods/ConfirmPayment";
-import PageHeader from "../features/paymentMethods/HeaderComponent";
-import PaymentHeader from "../features/paymentMethods/PaymentHeader";
-import SecurityMessage from "../features/paymentMethods/SecurityMessage";
+import PageHeader from "../features/paymentMethods/components/HeaderComponent";
+import PaymentHeader from "../features/paymentMethods/components/PaymentHeader";
+import SecurityMessage from "../features/paymentMethods/components/SecurityMessage";
 import { useNavigate } from "react-router-dom";
 
 function PaymentPage() {

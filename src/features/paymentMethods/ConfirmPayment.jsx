@@ -1,10 +1,28 @@
 import { useLocation } from "react-router-dom";
-import CardPaymentForm from "./CardPaymentForm";
+import CardPaymentForm from "./paymentPages/CardPaymentPage";
+import CashPaymentPage from "./paymentPages/CashPaymentPage";
+import { useEffect, useState } from "react";
+import StripeProvider from "./Stripe/StripeProvider";
+import SecurityMessage from "./components/SecurityMessage";
 
 function ConfirmPayment() {
   const location = useLocation();
   const { price, payMethod } = location.state;
+  const [clientSecret, setClientSecret] = useState("");
+
   console.log(payMethod + price);
+
+  useEffect(() => {
+    if (payMethod === "debitCard") {
+      fetch("http://localhost:5000/api/payment/create-intent", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ price }),
+      })
+        .then((res) => res.json())
+        .then((data) => setClientSecret(data.clientSecret));
+    }
+  }, [payMethod, price]);
 
   if (!payMethod) return null;
 
@@ -18,21 +36,33 @@ function ConfirmPayment() {
     );
   }
 
-  if (payMethod === "debitCard") {
+  if (payMethod === "cash") {
     return (
-      <div className="mt-4">
-        <CardPaymentForm />
+      <div className="mt-4 p-4 rounded-xl border border-gray-200 bg-gray-50">
+        <CashPaymentPage />
       </div>
     );
   }
 
-  if (payMethod === "cash") {
+  if (payMethod === "debitCard") {
     return (
-      <div className="mt-4 p-4 rounded-xl border border-gray-200 bg-gray-50">
-        <p className="text-sm sm:text-base font-medium text-gray-800">
-          You will pay at the clinic upon arrival.
-        </p>
-      </div>
+      <StripeProvider>
+        <div className="mt-6 p-6  bg-white rounded-2xl shadow-lg border border-gray-100">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">
+            Card Payment
+          </h2>
+
+          {clientSecret ? (
+            <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
+              <CardPaymentForm clientSecret={clientSecret} />
+            </div>
+          ) : (
+            <p className="text-gray-600 text-center py-4 animate-pulse">
+              Loading payment…
+            </p>
+          )}
+        </div>
+      </StripeProvider>
     );
   }
 
@@ -40,36 +70,3 @@ function ConfirmPayment() {
 }
 
 export default ConfirmPayment;
-
-// import CardPaymentForm from "./CardPaymentForm";
-
-// function PaymentDetails({ payMethod }) {
-//   if (!payMethod) return null;
-
-//   if (payMethod === "value") {
-//     return (
-//       <div className="mt-4 p-4 rounded-xl border bg-gray-50">
-//         <p className="font-medium">
-//           valU installment plan will be available soon.
-//         </p>
-//       </div>
-//     );
-//   }
-
-//   if (payMethod === "debitCard") {
-//     return (
-//       <div className="">
-//         <CardPaymentForm />
-//       </div>
-//     );
-//   }
-
-//   if (payMethod === "cash") {
-//     return (
-//       <div className="mt-4 p-4 rounded-xl border bg-gray-50">
-//         <p className="font-medium">You will pay at the clinic upon arrival.</p>
-//       </div>
-//     );
-//   }
-// }
-// export default PaymentDetails;
