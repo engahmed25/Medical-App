@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import UserButton from "./UserButton";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-[var(--backGround-color)] px-6 py-4">
+    <nav className=" bg-[var(--backGround-color)] px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link>
@@ -55,6 +56,7 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
           <Link to="/register">
             <Button className="px-4 py-1">Sign up</Button>
           </Link>
+          <UserButton />
         </div>
 
         {/* Mobile Hamburger */}

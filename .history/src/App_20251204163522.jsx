@@ -17,9 +17,7 @@ import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
 import DoctorCard from "./ui/DoctorCard.jsx";
-import PaymentPage from "./pages/PaymentPage.jsx";
-import ConfirmPayment from "./features/paymentMethods/ConfirmPayment.jsx";
-import AppointmentCard from "./ui/AppointmentCard.jsx";
+import AppointmentCard from './ui/AppointmentCard.jsx'
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -67,20 +65,12 @@ const router = createBrowserRouter([
     element: <PatientDashboard />,
   },
   {
-    path: "/patient/payment",
-    element: <PaymentPage />,
-  },
-  {
-    path: "/patient/payment/confirm-payment",
-    element: <ConfirmPayment />,
-  },
-  {
     path: "/doctor/info",
     element: <DrInfo />,
   },
   {
-    path: "/appointmentCard",
-    element: <AppointmentCard />,
+    path: "/appointment",
+    element: <DrInfo />,
   },
 ]);
 
