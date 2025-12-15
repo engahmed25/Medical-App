@@ -73,7 +73,7 @@ export default function BookingSlots() {
         </div>
       </div>
 
-      {/* Book Button */}
+      
       <Button
         disabled={selectedTime === null || selectedDate === null}
         className={`w-full py-4 rounded-lg text-white font-semibold transition-all ${
