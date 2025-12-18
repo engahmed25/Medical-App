@@ -22,6 +22,8 @@ import AppointmentCard from "./ui/AppointmentCard.jsx";
 import BookingSlots from "./features/Appointments/BookingSlot.jsx";
 import MyAppointments from "./pages/MyAppointments.jsx";
 import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
+import PatientList from "./pages/PatientsList.jsx";
+import DashboardLayout from "./ui/DoctorDashBoardLayout.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -50,10 +52,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/patient/dashboard",
-    element: <PatientDashboard />,
-  },
+
   {
     path: "/register",
     element: <Register />,
@@ -81,8 +80,17 @@ const router = createBrowserRouter([
     element: <DrInfo />,
   },
   {
-    path: "/doctor/dashboard",
-    element: <DoctorDashBoard />,
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/doctor/dashboard",
+        element: <DoctorDashBoard />,
+      },
+      {
+        path: "/doctor/patientList",
+        element: <PatientList />,
+      },
+    ],
   },
 ]);
 
