@@ -61,6 +61,7 @@ function DoctorList({ speciality, search }) {
             price={doctor.price}
             status={doctor.status}
             image={doctor.image}
+            id={doctor.id}
           />
         ))
       )}
