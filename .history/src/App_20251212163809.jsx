@@ -17,9 +17,6 @@ import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
 import DoctorCard from "./ui/DoctorCard.jsx";
-import Doctor from "./pages/Doctor.jsx";
-import AppointmentCard from './ui/AppointmentCard.jsx';
-import BookingSlots from "./features/Appointments/BookingSlot.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -37,10 +34,6 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: <ContactUs />,
-      },
-      {
-        path: "/doctor/:id",
-        element: <Doctor />,
       },
     ],
   },
@@ -74,14 +67,8 @@ const router = createBrowserRouter([
     path: "/doctor/info",
     element: <DrInfo />,
   },
-  {
-    path: "/appointmentCard",
-    element: <AppointmentCard />,
-  },
-  {
-    path: "/appointment/Booking",
-    element: <BookingSlots />,
-  },
+  {path: "/doctor/info",
+    element: <DrInfo />,},
 ]);
 
 function App() {
