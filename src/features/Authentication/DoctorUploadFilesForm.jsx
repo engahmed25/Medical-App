@@ -4,6 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import UploadFilesInput from "./UploadFilesInput";
 import UploadGroup from "./UploadGroup";
 import Button from "../../ui/Button";
+import UploadPicture from "./UploadPicture";
 
 function DoctorUploadFilesForm({ onNext }) {
   const {
@@ -32,8 +33,68 @@ function DoctorUploadFilesForm({ onNext }) {
         className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto "
         onSubmit={handleSubmit(onSubmit)}
       >
+        <Controller
+          name="profilePicture"
+          control={control}
+          rules={{
+            required: "Profile Picture is required",
+            validate: (files) => {
+              if (!files || files.length === 0) return "Please upload a file";
+              const allowed = ["image/jpeg", "image/png", "image/jpg"];
+              if (!allowed.includes(files[0].type))
+                return "Only JPG, JPEG, PNG allowed";
+              return true;
+            },
+          }}
+          render={({ field }) => (
+            // <UploadFilesInput
+            //   {...field}
+            //   label="Upload your Profile Picture"
+            //   helperText="Supported: jpg, jpeg, png"
+            //   allowedTypes={["image/jpeg", "image/png", "image/jpg"]}
+            //   onFileAccepted={(file) => field.onChange(file)}
+            //   error={errors.profilePicture}
+            //   multiple={false}
+            //   dropActiveText="Release to upload your Profile Picture"
+            //   dropInactiveText="Drag 'n' drop your Profile Picture here, or click to select"
+            // />
+
+            <UploadPicture register={register} errors={errors} />
+          )}
+        />
+        {/* Profile Picture & PhD Certificate */}
+        <Controller
+          name="idProof"
+          control={control}
+          rules={{
+            required: "ID Proof is required",
+            validate: (files) => {
+              if (!files || files.length === 0) return "Please upload a file";
+              const allowed = ["image/jpeg", "image/png", "image/jpg"];
+              if (!allowed.includes(files[0].type))
+                return "Only JPG, JPEG, PNG allowed";
+              return true;
+            },
+          }}
+          render={({ field }) => (
+            <UploadFilesInput
+              {...field}
+              label="Upload your ID Proof"
+              helperText="Supported: jpg, jpeg, png"
+              allowedTypes={["image/jpeg", "image/png", "image/jpg"]}
+              onFileAccepted={(file) => field.onChange(file)}
+              error={errors.idProof}
+              multiple={false}
+              dropActiveText="Release to upload your ID Proof"
+              dropInactiveText="Drag 'n' drop your ID Proof here, or click to select"
+            />
+          )}
+        />
         {/* ID Proof & Medical License */}
-        <UploadGroup title="َAcademic & Professional Documents">
+        <UploadGroup
+          className="mt-6"
+          title="َAcademic & Professional Documents"
+        >
           {/* //! controller is like register but register used for plain HTML inputs 
           // ! but no we have our custom input so we used controller from react hook form it connect the custom input with react hook form */}
           <Controller
@@ -108,63 +169,6 @@ function DoctorUploadFilesForm({ onNext }) {
           />
         </UploadGroup>
 
-        {/* Profile Picture & PhD Certificate */}
-        <UploadGroup title="Personal Information">
-          <Controller
-            name="profilePicture"
-            control={control}
-            rules={{
-              required: "Profile Picture is required",
-              validate: (files) => {
-                if (!files || files.length === 0) return "Please upload a file";
-                const allowed = ["image/jpeg", "image/png", "image/jpg"];
-                if (!allowed.includes(files[0].type))
-                  return "Only JPG, JPEG, PNG allowed";
-                return true;
-              },
-            }}
-            render={({ field }) => (
-              <UploadFilesInput
-                {...field}
-                label="Upload your Profile Picture"
-                helperText="Supported: jpg, jpeg, png"
-                allowedTypes={["image/jpeg", "image/png", "image/jpg"]}
-                onFileAccepted={(file) => field.onChange(file)}
-                error={errors.profilePicture}
-                multiple={false}
-                dropActiveText="Release to upload your Profile Picture"
-                dropInactiveText="Drag 'n' drop your Profile Picture here, or click to select"
-              />
-            )}
-          />
-          <Controller
-            name="idProof"
-            control={control}
-            rules={{
-              required: "ID Proof is required",
-              validate: (files) => {
-                if (!files || files.length === 0) return "Please upload a file";
-                const allowed = ["image/jpeg", "image/png", "image/jpg"];
-                if (!allowed.includes(files[0].type))
-                  return "Only JPG, JPEG, PNG allowed";
-                return true;
-              },
-            }}
-            render={({ field }) => (
-              <UploadFilesInput
-                {...field}
-                label="Upload your ID Proof"
-                helperText="Supported: jpg, jpeg, png"
-                allowedTypes={["image/jpeg", "image/png", "image/jpg"]}
-                onFileAccepted={(file) => field.onChange(file)}
-                error={errors.idProof}
-                multiple={false}
-                dropActiveText="Release to upload your ID Proof"
-                dropInactiveText="Drag 'n' drop your ID Proof here, or click to select"
-              />
-            )}
-          />
-        </UploadGroup>
         <Button type="submit" className="w-full p-2.5" disabled={isSubmitting}>
           {isSubmitting ? "Forwarding..." : "Last Step: Clinic Details"}
         </Button>
