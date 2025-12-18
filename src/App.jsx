@@ -18,8 +18,10 @@ import PatientDashboard from "./pages/PatientDashboard.jsx";
 import { Toaster } from "react-hot-toast";
 import DoctorCard from "./ui/DoctorCard.jsx";
 import Doctor from "./pages/Doctor.jsx";
-import AppointmentCard from './ui/AppointmentCard.jsx';
+import AppointmentCard from "./ui/AppointmentCard.jsx";
 import BookingSlots from "./features/Appointments/BookingSlot.jsx";
+import MyAppointments from "./pages/MyAppointments.jsx";
+import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/doctor/:id",
         element: <Doctor />,
+      },
+      {
+        path: "/appointments",
+        element: <MyAppointments />,
       },
     ],
   },
@@ -75,12 +81,8 @@ const router = createBrowserRouter([
     element: <DrInfo />,
   },
   {
-    path: "/appointmentCard",
-    element: <AppointmentCard />,
-  },
-  {
-    path: "/appointment/Booking",
-    element: <BookingSlots />,
+    path: "/doctor/dashboard",
+    element: <DoctorDashBoard />,
   },
 ]);
 

@@ -14,13 +14,10 @@ export default function Header() {
         <Link>
           <div className="text-xl font-semibold flex items-center gap-1">
             <img
-              src="/src/assets/navLogo/logo.png"
+              src="./logo.png"
               alt="logo"
               className="w-12 md:w-12 rounded-xl object-cover"
             />
-            <span className="text-[var(--main-lite-color)] text-2xl">
-              Medicare
-            </span>
           </div>
         </Link>
 
