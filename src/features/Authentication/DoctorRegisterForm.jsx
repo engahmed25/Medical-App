@@ -7,6 +7,7 @@ import Button from "../../ui/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Select from "./Select";
 import { useSignup } from "./useSignUp";
+import { useDoctorRegister } from "../../../Context/DoctorRegisterContext";
 const specializations = [
   "Cardiology",
   "Dermatology",
@@ -27,6 +28,8 @@ const specializations = [
 ];
 
 function DoctorRegisterForm({ onNext }) {
+  const { updateFormData, formData } = useDoctorRegister();
+
   const {
     register,
     handleSubmit,
@@ -34,14 +37,16 @@ function DoctorRegisterForm({ onNext }) {
     getValues,
     trigger,
     formState: { errors, isSubmitting },
-  } = useForm();
+  } = useForm({
+    defaultValues: formData.step1, //! this to pre-fill the form if the user goes back
+  });
 
   const { mutateAsync: signup, isLoading } = useSignup();
 
   //! this watch comes from react hook form to watch the specialization field
   const selectedSpecialization = watch("specialization");
 
-  async function onSubmit(data) {
+  function onSubmit(data) {
     // try {
     //   const res = await signup(data);
     //   console.log("Doctor registered:", res);
@@ -49,6 +54,8 @@ function DoctorRegisterForm({ onNext }) {
     // } catch (error) {
     //   console.error("Registration failed:", error);
     // }
+
+    updateFormData("step1", data);
     onNext();
   }
 

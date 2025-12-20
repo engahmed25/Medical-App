@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import FormInput from "./FormInput";
 import Button from "../../ui/Button";
+import { useDoctorRegister } from "../../../Context/DoctorRegisterContext";
+import { useSignUpDoctor } from "./useSignUpDoctor";
+import { useNavigate } from "react-router-dom";
 
 const Days = [
   "Sunday",
@@ -14,23 +17,41 @@ const Days = [
 ];
 
 function DoctorClinicForm({ onNext }) {
+  const { updateFormData, formData } = useDoctorRegister();
+
   const {
     register,
     handleSubmit,
     watch,
     trigger,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: formData.step3,
+  });
 
   const [slots, setSlots] = useState([{ id: Date.now() }]);
+
+  const { signUpAsync: doctorRegister, isLoading } = useSignUpDoctor();
+  const navigate = useNavigate();
 
   // -----------------------------
   // SUBMIT FORM
   // -----------------------------
-  const onSubmit = (data) => {
-    console.log("Form submitted:", data);
-    onNext();
-  };
+  async function onSubmit(data) {
+    updateFormData("step3", data);
+
+    const payload = {
+      ...formData.step1,
+      ...formData.step2,
+      ...data,
+    };
+    try {
+      const res = await doctorRegister(payload);
+    } catch (error) {
+      console.error("Registration failed:", error);
+    }
+    navigate("/login");
+  }
 
   // -----------------------------
   // ADD SLOT with RHF validation
@@ -145,7 +166,7 @@ function DoctorClinicForm({ onNext }) {
           type="submit"
           className="w-full p-2.5 mt-2.5 bg-white text-black! border border-(--main-color) hover:bg-(--main-color) hover:text-white!"
         >
-          Submit
+          {isLoading ? "Submitting..." : "Submit"}
         </Button>
       </form>
     </div>

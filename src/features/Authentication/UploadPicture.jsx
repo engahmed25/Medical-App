@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 
 function UploadPicture({
-  onFileAccepted,
+  onFileAccepted = () => {}, // Add default empty function
   label = "Upload your profile picture",
   borderClass = "border-[var(--main-color)]",
   borderStyle = "border-dashed",
