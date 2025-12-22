@@ -6,11 +6,13 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function CardPaymentForm({ clientSecret }) {
+function CardPaymentFormPage({ clientSecret }) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate(); // Add this hook
 
   const handlePayment = async (e) => {
     e.preventDefault();
@@ -33,6 +35,15 @@ function CardPaymentForm({ clientSecret }) {
       alert(error.message);
     } else if (paymentIntent?.status === "succeeded") {
       alert("Payment Successful!");
+      navigate(
+        "/confirmappointmentpage"
+        //   , {
+        //   state: {
+        //     payMethod: "debitCard",
+        //     // appointmentInfo,
+        //   },
+        // }
+      );
     }
 
     setLoading(false);
@@ -118,4 +129,4 @@ function CardPaymentForm({ clientSecret }) {
   );
 }
 
-export default CardPaymentForm;
+export default CardPaymentFormPage;

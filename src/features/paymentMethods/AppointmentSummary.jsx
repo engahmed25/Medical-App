@@ -17,7 +17,7 @@ function AppointmentSummary(props) {
   // };
 
   return (
-    <div className="bg-white rounded-lg border border-gray-300 p-5">
+    <div className="bg-white w-[80%] rounded-lg border border-gray-300 p-5">
       {/* Title */}
       <h2 className="text-lg font-bold text-gray-900 mb-5">
         Appointment Summary

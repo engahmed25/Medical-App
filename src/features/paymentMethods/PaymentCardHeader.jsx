@@ -1,5 +1,5 @@
 // Payment Header Component
-function PaymentHeader() {
+function PaymentCardHeader() {
   return (
     <div className="mb-6 sm:mb-8">
       <h1 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
@@ -12,4 +12,4 @@ function PaymentHeader() {
     </div>
   );
 }
-export default PaymentHeader;
+export default PaymentCardHeader;

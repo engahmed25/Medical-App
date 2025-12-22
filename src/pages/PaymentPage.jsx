@@ -1,12 +1,9 @@
 import { useState } from "react";
-import AppointmentSummary from "../features/paymentMethods/components/AppointmentSummary";
-import PaymentMethod from "../features/paymentMethods/PaymentMethod";
-import PaymentDetails from "../features/paymentMethods/ConfirmPayment";
-import PageHeader from "../features/paymentMethods/components/HeaderComponent";
-import PaymentHeader from "../features/paymentMethods/components/PaymentHeader";
-import SecurityMessage from "../features/paymentMethods/components/SecurityMessage";
 import { useNavigate } from "react-router-dom";
-
+import PaymentMethod from "../features/paymentMethods/PaymentMethod";
+import AppointmentSummary from "../features/paymentMethods/AppointmentSummary";
+import PaymentPageHeader from "../features/paymentMethods/PaymentPageHeader";
+import PaymentCardHeader from "../features/paymentMethods/PaymentCardHeader";
 function PaymentPage() {
   const [selectedMethod, setSelectedMethod] = useState("");
 
@@ -24,6 +21,12 @@ function PaymentPage() {
     if (!selectedMethod) return; // prevent navigation if no method selected
     navigate("/patient/payment/confirm-payment", {
       state: {
+        drName: appointmentInfo.drName,
+        speciality: appointmentInfo.speciality,
+        date: appointmentInfo.date,
+        time: appointmentInfo.time,
+        clinicName: appointmentInfo.clinicName,
+        clinicLocation: appointmentInfo.clinicLocation,
         price: appointmentInfo.price,
         payMethod: selectedMethod,
       },
@@ -34,7 +37,7 @@ function PaymentPage() {
     <>
       <div className="min-h-screen bg-gray-50 p-4 md:p-8">
         <div className="max-w-6xl mx-auto">
-          <PageHeader />
+          <PaymentPageHeader />
 
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
             <aside className="w-full lg:w-1/3">
@@ -51,7 +54,7 @@ function PaymentPage() {
 
             <main className="w-full lg:w-2/3">
               <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
-                <PaymentHeader />
+                <PaymentCardHeader />
 
                 {/* Payment Methods */}
                 <PaymentMethod

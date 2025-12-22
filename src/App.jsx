@@ -20,6 +20,8 @@ import DoctorCard from "./ui/DoctorCard.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import ConfirmPayment from "./features/paymentMethods/ConfirmPayment.jsx";
 import AppointmentCard from "./ui/AppointmentCard.jsx";
+import ConfirmAppointmentPage from "./pages/ConfirmAppointmentPage.jsx";
+import PatientInfo from "./features/Patients/PatientInfo.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -81,6 +83,14 @@ const router = createBrowserRouter([
   {
     path: "/appointmentCard",
     element: <AppointmentCard />,
+  },
+  {
+    path: "/confirmappointmentpage",
+    element: <ConfirmAppointmentPage />,
+  },
+  {
+    path: "/patient/patientinfo",
+    element: <PatientInfo />,
   },
 ]);
 

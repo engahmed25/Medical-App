@@ -1,6 +1,6 @@
 import { FaStarOfLife, FaCreditCard } from "react-icons/fa";
 import { GiTakeMyMoney } from "react-icons/gi";
-import PaymentMethodCard from "./components/paymentMethodCardDesign";
+import PaymentMethodCard from "./paymentMethodCardDesign";
 
 const paymentOptions = [
   {

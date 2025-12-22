@@ -1,14 +1,32 @@
 import { useLocation } from "react-router-dom";
-import CardPaymentForm from "./paymentPages/CardPaymentPage";
-import CashPaymentPage from "./paymentPages/CashPaymentPage";
 import { useEffect, useState } from "react";
 import StripeProvider from "./Stripe/StripeProvider";
-import SecurityMessage from "./components/SecurityMessage";
+import ConfirmAppointmentPage from "../../pages/ConfirmAppointmentPage";
 
 function ConfirmPayment() {
   const location = useLocation();
-  const { price, payMethod } = location.state;
+  const {
+    // drName,
+    // speciality,
+    // date,
+    // time,
+    // clinicName,
+    // clinicLocation,
+    price,
+    payMethod,
+  } = location.state;
+
   const [clientSecret, setClientSecret] = useState("");
+
+  // const appointmentInfo = {
+  //   drName: drName,
+  //   speciality: speciality,
+  //   date: date,
+  //   time: time,
+  //   clinicName: clinicName,
+  //   clinicLocation: clinicLocation,
+  //   price: price,
+  // };
 
   console.log(payMethod + price);
 
@@ -38,8 +56,8 @@ function ConfirmPayment() {
 
   if (payMethod === "cash") {
     return (
-      <div className="mt-4 p-4 rounded-xl border border-gray-200 bg-gray-50">
-        <CashPaymentPage />
+      <div className="p-4 rounded-xl border border-gray-200 bg-gray-50">
+        <ConfirmAppointmentPage payMethod={"cash"} />
       </div>
     );
   }
@@ -54,7 +72,10 @@ function ConfirmPayment() {
 
           {clientSecret ? (
             <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
-              <CardPaymentForm clientSecret={clientSecret} />
+              <CardPaymentFormPage
+                clientSecret={clientSecret}
+                // appointmentInfo={appointmentInfo}
+              />
             </div>
           ) : (
             <p className="text-gray-600 text-center py-4 animate-pulse">
