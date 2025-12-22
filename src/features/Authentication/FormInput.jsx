@@ -6,11 +6,18 @@ function FormInput({
   register,
   error,
   validation,
+<<<<<<< HEAD
   className,
   ...rest
 }) {
   return (
     <div className={`flex flex-col  items-start gap-1 ${className}`}>
+=======
+  ...rest
+}) {
+  return (
+    <div className="flex flex-col  items-start gap-1">
+>>>>>>> master
       <label className="ml-0.5">{label}</label>
       <input
         className=" border-[1px] border-gray-300 rounded-lg p-2 w-full"

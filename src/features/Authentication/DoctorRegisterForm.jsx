@@ -4,10 +4,13 @@ import FormInput from "./FormInput";
 import Doctor from "./FormRow";
 import FormRow from "./FormRow";
 import Button from "../../ui/Button";
+<<<<<<< HEAD
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Select from "./Select";
 import { useSignup } from "./useSignUp";
 import { useDoctorRegister } from "../../../Context/DoctorRegisterContext";
+=======
+>>>>>>> master
 const specializations = [
   "Cardiology",
   "Dermatology",
@@ -26,15 +29,35 @@ const specializations = [
   "Ophthalmology",
   "Other",
 ];
+<<<<<<< HEAD
 
 function DoctorRegisterForm({ onNext }) {
   const { updateFormData, formData } = useDoctorRegister();
 
+=======
+const timeSlots = [
+  "08:00 AM",
+  "09:00 AM",
+  "10:00 AM",
+  "11:00 AM",
+  "12:00 PM",
+  "01:00 PM",
+  "02:00 PM",
+  "03:00 PM",
+  "04:00 PM",
+  "05:00 PM",
+  "06:00 PM",
+  "07:00 PM",
+  "08:00 PM",
+];
+function DoctorRegisterForm() {
+>>>>>>> master
   const {
     register,
     handleSubmit,
     watch,
     getValues,
+<<<<<<< HEAD
     trigger,
     formState: { errors, isSubmitting },
   } = useForm({
@@ -42,10 +65,15 @@ function DoctorRegisterForm({ onNext }) {
   });
 
   const { mutateAsync: signup, isLoading } = useSignup();
+=======
+    formState: { errors, isSubmitting },
+  } = useForm();
+>>>>>>> master
 
   //! this watch comes from react hook form to watch the specialization field
   const selectedSpecialization = watch("specialization");
 
+<<<<<<< HEAD
   function onSubmit(data) {
     // try {
     //   const res = await signup(data);
@@ -61,11 +89,28 @@ function DoctorRegisterForm({ onNext }) {
 
   return (
     <div className="w-full h-[100vh] flex items-center justify-center flex-col">
+=======
+  const onSubmit = async (data) => {
+    try {
+      console.log("Register data:", data);
+      // TODO: integrate with auth API (e.g., call register service)
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  return (
+    <div className="w-full h-[100vh] grid place-content-center">
+>>>>>>> master
       <h2 className="mb-5 flex  items-center justify-center font-bold text-3xl ">
         WELCOME DOCTOR 🥼
       </h2>
       <form
+<<<<<<< HEAD
         className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto "
+=======
+        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[400px] overflow-auto md:h-auto"
+>>>>>>> master
         onSubmit={handleSubmit(onSubmit)}
       >
         <FormRow>
@@ -78,7 +123,10 @@ function DoctorRegisterForm({ onNext }) {
             error={errors.firstName}
             validation={{ required: "First name is required" }}
           />
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
           <FormInput
             label="Last Name"
             name="lastName"
@@ -149,7 +197,11 @@ function DoctorRegisterForm({ onNext }) {
             validation={{ required: "Clinic Address is required" }}
           />
           {/* <FormInput
+<<<<<<< HEAD
             label="Start Time"
+=======
+            label="Sart Time"
+>>>>>>> master
             name="startTime"
             type="time"
             placeholder="Start Time"
@@ -159,6 +211,18 @@ function DoctorRegisterForm({ onNext }) {
           />
 
           <FormInput
+<<<<<<< HEAD
+=======
+            label="End Time"
+            name="endTime"
+            type="time"
+            placeholder="End Time"
+            register={register}
+            error={errors.endTime}
+            validation={{ required: "End time is required" }}
+          /> */}
+          <FormInput
+>>>>>>> master
             label="Medical License Number"
             name="medicalLicenseNumber"
             type="text"
@@ -169,6 +233,7 @@ function DoctorRegisterForm({ onNext }) {
           />
         </FormRow>
         {/* we will make it combo box as a feature */}
+<<<<<<< HEAD
         </FormRow>
         {/* Specialization Select */}
         <Select
@@ -182,6 +247,57 @@ function DoctorRegisterForm({ onNext }) {
           validation={{ required: "Specialization is required" }}
           options={specializations}
         />
+=======
+        {/* Specialization Select */}
+        <div className="mb-6 flex flex-col items-start gap-1">
+          <label className="ml-0.5">Specialization</label>
+          <select
+            className="border-[1px] border-gray-300 rounded-lg p-2 w-full bg-white"
+            {...register("specialization", { required: true })}
+          >
+            <option disabled value="">
+              Select your specialization
+            </option>
+            {specializations.map((spec) => (
+              <option key={spec} value={spec}>
+                {spec}
+              </option>
+            ))}
+          </select>
+          {errors.specialization && (
+            <span className="text-red-500 text-sm">This field is required</span>
+          )}
+        </div>
+        {/* Conditional Input - Shows when "Other" is selected */}
+        {selectedSpecialization === "Other" && (
+          <div className="mb-6 flex flex-col items-start gap-1">
+            <label className="ml-0.5">Please specify your specialization</label>
+            <input
+              className="border-[1px] border-gray-300 rounded-lg p-2 w-full"
+              type="text"
+              {...register("otherSpecialization", {
+                required:
+                  selectedSpecialization === "Other"
+                    ? "Please specify your specialization"
+                    : false,
+              })}
+              placeholder="Enter your specialization"
+            />
+            {errors.otherSpecialization && (
+              <span className="text-red-500 text-sm">
+                {errors.otherSpecialization.message}
+              </span>
+            )}
+          </div>
+        )}
+        {/* <button
+          type="submit"
+          className="bg-[var(--main-color)] p-2.5 rounded-[10px] w-full cursor-pointer text-white font-bold transition-colors duration-500  hover:bg-[var(--main-lite-color)]"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Forwarding..." : "Upload Files"}
+        </button> */}
+>>>>>>> master
 
         <Button type="submit" className="w-full p-2.5" disabled={isSubmitting}>
           {isSubmitting ? "Forwarding..." : "Upload Files"}
