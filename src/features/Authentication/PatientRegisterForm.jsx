@@ -3,7 +3,8 @@ import FormRow from "./FormRow";
 import FormInput from "./FormInput";
 import Button from "../../ui/Button";
 import Select from "./Select";
-
+import UploadFilesInput from "./UploadFilesInput";
+import UploadPicture from "./UploadPicture";
 function PatientRegisterForm({ onNext }) {
   const {
     register,
@@ -32,6 +33,7 @@ function PatientRegisterForm({ onNext }) {
         className="shadow-[0px_5px_15px_RGBA(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
+        <UploadPicture register={register} errors={errors} />
         <FormRow>
           <FormInput
             label="First Name"
