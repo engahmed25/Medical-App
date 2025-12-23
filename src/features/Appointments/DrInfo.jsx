@@ -1,15 +1,15 @@
 import { FiInfo } from "react-icons/fi";
 import { MdOutlineVerified } from "react-icons/md";
-import DrImg from "./../../assets/DrInfoImgs/DrImg.png";
+import DrImg from "./../../assets/DrImgs/DrImg.png";
 
 const doctorInfo = {
   img: DrImg,
   name: "Dr Name",
   speciality: "Dermatologist",
-  experience: "2",
+  numbrOfExperience: "2",
   about:
     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum eligendi distinctio exercitationem? Et illo deserunt sit incidunt atque cumque libero similique aut, adipisci eaque dolorum veritatis doloribus nostrum neque blanditiis? Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum voluptatem enim maxime beatae cumque ex?",
-  fee: 50,
+  numberOfFee: 50,
 };
 
 function DrInfo() {
@@ -37,7 +37,7 @@ function DrInfo() {
           </h2>
 
           <span className="border border-gray-400 rounded-2xl text-gray-600 text-xs px-3 py-1 bg-white shadow-sm">
-            <span>{doctorInfo.experience}</span> years
+            <span>{doctorInfo.numbrOfExperience}</span> years
           </span>
         </div>
 
@@ -52,7 +52,10 @@ function DrInfo() {
 
         <p className="mt-5 text-gray-700 text-lg">
           Appointment Fee:
-          <span className="font-bold text-gray-900"> {doctorInfo.fee}</span>
+          <span className="font-bold text-gray-900">
+            {" "}
+            {doctorInfo.numberOfFee}
+          </span>
         </p>
       </div>
     </section>

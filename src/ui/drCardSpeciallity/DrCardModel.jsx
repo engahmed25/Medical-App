@@ -15,7 +15,8 @@ function DrCardModel({ img, drSpeciallityTitle }) {
       transition-transform 
       duration-300 
       transform 
-      hover:scale-110"
+      hover:scale-110
+      "
     >
       <img
         src={img}

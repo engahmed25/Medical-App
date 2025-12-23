@@ -13,14 +13,8 @@ import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
 import MedicalHistory from "./features/Patients/MedicalHistory/MedicalHistory.jsx";
 import { Toaster } from "react-hot-toast";
-import Doctor from "./pages/Doctor.jsx";
-import MyAppointments from "./pages/MyAppointments.jsx";
-import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
-import PatientList from "./pages/PatientsList.jsx";
-import DashboardLayout from "./ui/DoctorDashBoardLayout.jsx";
-import { AuthProvider } from "react-auth-kit";
-// import store from "./utils/authStore.js";
-// import * as authKit from "react-auth-kit";
+import DoctorCard from "./ui/DoctorCard.jsx";
+import AppointmentCard from './ui/AppointmentCard.jsx';
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -73,10 +67,6 @@ const router = createBrowserRouter([
     element: <PatientDashboard />,
   },
   {
-    path: "/patient/medical-history",
-    element: <MedicalHistory />,
-  },
-  {
     path: "/doctor/info",
     element: <DrInfo />,
   },
@@ -93,6 +83,14 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/confirmappointmentpage",
+    element: <ConfirmAppointmentPage />,
+  },
+  // {
+  //   path: "/patient/patientinfo",
+  //   element: <PatientInfo />,
+  // },
 ]);
 
 function App() {
@@ -106,7 +104,6 @@ function App() {
         cookieSecure={window.location.protocol === "https:"}
       >
         <QueryClientProvider client={queryClient}>
-          {" "}
           <RouterProvider router={router} />
         </QueryClientProvider>
         <Toaster position="top-center" />
