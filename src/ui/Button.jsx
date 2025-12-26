@@ -3,10 +3,7 @@ function Button({
   onClick,
   disabled,
   className,
-<<<<<<< HEAD
   type = "submit",
-=======
->>>>>>> master
   withTransition = true,
   withHover = true,
 }) {
@@ -14,10 +11,7 @@ function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-<<<<<<< HEAD
       type={type}
-=======
->>>>>>> master
       className={`${className} bg-[var(--main-color)] text-white font-bold rounded-[var(--main-radius)] ${
         withTransition
           ? "transition-colors duration-500 cursor-pointer"

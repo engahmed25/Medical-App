@@ -19,6 +19,9 @@ import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
 import PatientList from "./pages/PatientsList.jsx";
 import DashboardLayout from "./ui/DoctorDashBoardLayout.jsx";
 import { AuthProvider } from "react-auth-kit";
+import ConfirmPayment from "./features/paymentMethods/ConfirmPayment.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
+import ConfirmAppointmentPage from "./pages/ConfirmAppointmentPage.jsx";
 // import store from "./utils/authStore.js";
 // import * as authKit from "react-auth-kit";
 
@@ -90,6 +93,18 @@ const router = createBrowserRouter([
       {
         path: "/doctor/patientList",
         element: <PatientList />,
+      },
+      {
+        path: "/patient/payment",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/patient/payment/confirm-payment",
+        element: <ConfirmPayment />,
+      },
+      {
+        path: "/confirmappointmentpage",
+        element: <ConfirmAppointmentPage />,
       },
     ],
   },
