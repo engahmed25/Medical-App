@@ -49,24 +49,24 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
           </li>
         </ul>
 
-        {/* Right Section - Notification, Buttons, and Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* <Notification/> */}
-          
-          {/* Desktop Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            {/* Using your custom Button component */}
-            <Link to="/register">
-              <Button className="px-4 py-1">Sign up</Button>
-            </Link>
-            <UserButton />
-          </div>
+        
 
-          {/* Mobile Hamburger */}
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <X size={28} /> : <Menu size={28} />}
-          </button>
+        {/* Right Buttons (using your Button component) */}
+        <div className="hidden md:flex items-center gap-4">
+          {/* <Link>Log in</Link> */}
+
+          {/* Using your custom Button component */}
+          <Link to="/register">
+            <Button className="px-4 py-1">Sign up</Button>
+          </Link>
+          <UserButton />
         </div>
+
+        {/* Mobile Hamburger */}
+        <Notification/>
+        <button className="md:hidden" onClick={() => setOpen(!open)}>
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {/* Mobile Dropdown */}

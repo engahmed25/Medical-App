@@ -51,7 +51,7 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
 
         {/* Right Section - Notification, Buttons, and Mobile Menu */}
         <div className="flex items-center gap-4">
-          {/* <Notification/> */}
+          <Notification/>
           
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center gap-4">
