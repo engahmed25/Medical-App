@@ -5,7 +5,7 @@ import UploadFilesInput from "./UploadFilesInput";
 import UploadGroup from "./UploadGroup";
 import Button from "../../ui/Button";
 import UploadPicture from "./UploadPicture";
-import { useDoctorRegister } from "../../../Context/DoctorRegisterContext";
+import { useDoctorRegister } from "../../Context/DoctorRegisterContext";
 
 function DoctorUploadFilesForm({ onNext }) {
   const { updateFormData, formData } = useDoctorRegister();
@@ -34,7 +34,7 @@ function DoctorUploadFilesForm({ onNext }) {
   };
 
   return (
-    <div className="w-full h-[100vh] flex items-center justify-center flex-col  ">
+    <div className="w-full h-screen flex items-center justify-center flex-col  ">
       <h2 className="mb-5 flex  items-center justify-center font-bold text-3xl ">
         UPLOAD YOUR FILES 📁
       </h2>

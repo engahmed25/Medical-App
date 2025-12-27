@@ -11,6 +11,8 @@ import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
+
+import MedicalHistory from "./features/Authentication/MedicalHistoryForm.jsx";
 import { Toaster } from "react-hot-toast";
 import Doctor from "./pages/Doctor.jsx";
 import MyAppointments from "./pages/MyAppointments.jsx";
@@ -18,10 +20,24 @@ import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
 import PatientList from "./pages/PatientsList.jsx";
 import DashboardLayout from "./ui/DoctorDashBoardLayout.jsx";
 import { AuthProvider } from "react-auth-kit";
+import WaitAdminApproval from "./pages/WaitAdminApproval.jsx";
+import ProtectedRoute from "./features/Authentication/ProtectedRoutes.jsx";
+import Unauthorized from "./pages/Unauthorized.jsx";
+import ConsultingDoctors from "./pages/ConsultingDoctors.jsx";
+import UploadPatientsFiles from "./pages/UploadPatientsFiles.jsx";
+import EmailConfirmation from "./pages/EmailConfirmation.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import store from "./utils/authStore.js";
 // import * as authKit from "react-auth-kit";
-
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -68,25 +84,76 @@ const router = createBrowserRouter([
     element: <PatientRegisterFormWizard />,
   },
   {
-    path: "/patient/dashboard",
-    element: <PatientDashboard />,
+    path: "/patient/upload-files",
+    element: <UploadPatientsFiles />,
+  },
+  {
+    path: "/unauthorized",
+    element: <Unauthorized />,
+  },
+  // {
+  //   path: "/patient/dashboard",
+  //   element: (
+  //     <ProtectedRoute allowedRoles={["patient", "doctor"]}>
+  //       <PatientDashboard />
+  //     </ProtectedRoute>
+  //   ),
+  // },
+  {
+    path: "/patient/medical-history",
+    element: (
+      <ProtectedRoute allowedRoles={["patient", "doctor"]}>
+        <MedicalHistory />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/doctor/info",
     element: <DrInfo />,
   },
   {
-    element: <DashboardLayout />,
+    path: "/forgot-password",
+    element: <EmailConfirmation />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/wait",
+    element: <WaitAdminApproval />,
+  },
+
+  //! we need to reuse the layout for both doctor and patient dashboard
+  {
+    path: "/doctor",
+    element: (
+      <ProtectedRoute allowedRoles={["doctor"]}>
+        <DashboardLayout role="doctor" />
+      </ProtectedRoute>
+    ),
     children: [
-      {
-        path: "/doctor/dashboard",
-        element: <DoctorDashBoard />,
-      },
-      {
-        path: "/doctor/patientList",
-        element: <PatientList />,
-      },
+      { path: "dashboard", element: <DoctorDashBoard /> },
+      { path: "patientList", element: <PatientList /> },
     ],
+  },
+
+  {
+    path: "/patient",
+    element: (
+      <ProtectedRoute allowedRoles={["patient"]}>
+        <DashboardLayout role="patient" />
+      </ProtectedRoute>
+    ),
+    children: [{ path: "dashboard", element: <PatientDashboard /> }],
+  },
+  {
+    path: "/wait",
+    element: <WaitAdminApproval />,
+  },
+  {
+    path: "/consulting-doctors",
+    element: <ConsultingDoctors />,
   },
 ]);
 
@@ -103,6 +170,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           {" "}
           <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
         </QueryClientProvider>
         <Toaster position="top-center" />
       </AuthProvider>
