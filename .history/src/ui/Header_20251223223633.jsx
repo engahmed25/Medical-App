@@ -3,16 +3,10 @@ import { Menu, X } from "lucide-react";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 import UserButton from "./UserButton";
-import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
 import Notification from "../features/Notification/Notification";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const isAuthenticated = useIsAuthenticated();
-  const auth = useAuthUser();
-  const user = auth()?.user;
-
-  console.log("Header render - Authenticated user:", user);
 
   return (
     <nav className=" bg-[var(--backGround-color)] px-6 py-4">
@@ -21,10 +15,13 @@ export default function Header() {
         <Link>
           <div className="text-xl font-semibold flex items-center gap-1">
             <img
-              src="./logo.png"
+              src="/src/assets/navLogo/logo.png"
               alt="logo"
               className="w-12 md:w-12 rounded-xl object-cover"
             />
+            <span className="text-[var(--main-lite-color)] text-2xl">
+              Medicare
+            </span>
           </div>
         </Link>
 
@@ -52,49 +49,24 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
           </li>
         </ul>
 
-        {/* Right Buttons */}
+        
+
+        {/* Right Buttons (using your Button component) */}
         <div className="hidden md:flex items-center gap-4">
-          {isAuthenticated() ? (
-            <UserButton
-              profilePicture={user?.profilePicture}
-              role={user?.role}
-              userName={`${user?.firstName} ${user?.lastName}`}
-            />
-          ) : (
-            <>
-              <Link to="/login">
-                <Button variant="outline" className="px-4 py-1">
-                  Log in
-                </Button>
-              </Link>
-              <Link to="/register">
-                <Button className="px-4 py-1">Sign up</Button>
-              </Link>
-            </>
-          )}
+          <Notification/>
+          {/* <Link>Log in</Link> */}
+
+          {/* Using your custom Button component */}
+          <Link to="/register">
+            <Button className="px-4 py-1">Sign up</Button>
+          </Link>
+          <UserButton />
         </div>
+
         {/* Mobile Hamburger */}
         <button className="md:hidden" onClick={() => setOpen(!open)}>
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
-        {/* Right Section - Notification, Buttons, and Mobile Menu */}
-        <div className="flex items-center gap-4">
-          {/* <Notification/> */}
-          
-          {/* Desktop Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            {/* Using your custom Button component */}
-            <Link to="/register">
-              <Button className="px-4 py-1">Sign up</Button>
-            </Link>
-            <UserButton />
-          </div>
-
-          {/* Mobile Hamburger */}
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
-            {open ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
       </div>
 
       {/* Mobile Dropdown */}
@@ -102,33 +74,19 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
         <div className="md:hidden mt-4 space-y-4 bg-[var(--sec-color)] p-4 rounded-lg">
           <ul className="flex flex-col gap-4 text-[var(--main-lite-color)] font-bold">
             <li>
-              <Link to="/doctors">All Doctors</Link>
+              <Link href="#">All Doctors</Link>
             </li>
             <li>
-              <Link to="#">Find a Hospital</Link>
+              <Link href="#">Find a Hospital</Link>
             </li>
             <li>
-              <Link to="/contactus">Contact Us</Link>
+              <Link href="#">Health A to Z</Link>
             </li>
           </ul>
 
           <div className="flex flex-col gap-3 pt-3">
-            {isAuthenticated() ? (
-              <UserButton
-                profilePicture={user?.profilePicture}
-                role={user?.role}
-                userName={`${user?.firstName} ${user?.lastName}`}
-              />
-            ) : (
-              <>
-                <Link to="/login">
-                  <Button className="w-full">Log in</Button>
-                </Link>
-                <Link to="/register">
-                  <Button className="w-full">Sign up</Button>
-                </Link>
-              </>
-            )}
+            <Button>Log in</Button>
+            <Button>Sign up</Button>
           </div>
         </div>
       )}
