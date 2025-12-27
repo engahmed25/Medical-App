@@ -8,11 +8,7 @@ import {
 
 const Footer = () => {
   return (
-<<<<<<< HEAD
     <footer className="bg-[var(--main-lite-color)] text-white py-12 px-6 mt-12">
-=======
-    <footer className="bg-[var(--main-lite-color)] text-white py-12 px-6">
->>>>>>> master
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-6 gap-10 md:gap-0">
         {/* Left Section */}
         <div className="md:col-span-2 text-center md:text-left">
@@ -63,81 +59,48 @@ const Footer = () => {
           {/* Follow Us */}
           <div>
             <h3 className="font-semibold mb-4">Follow us</h3>
-<<<<<<< HEAD
             <div className="flex flex-col gap-2 items-start ">
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
                   <FaInstagram className="text-[var(--main-color)] w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
-=======
-            <div className="flex flex-col gap-3 items-center md:items-start">
-              <div className="flex items-center gap-2 group cursor-pointer">
-                <span className="bg-white p-2 rounded-full">
-                  <FaInstagram className="text-black w-5 h-5" />
-                </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
->>>>>>> master
                   Instagram
                 </span>
               </div>
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-<<<<<<< HEAD
                   <FaFacebookF className="text-[var(--main-color)] w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
-=======
-                  <FaFacebookF className="text-black w-5 h-5" />
-                </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
->>>>>>> master
                   Facebook
                 </span>
               </div>
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-<<<<<<< HEAD
                   <FaTwitter className="text-[var(--main-color)] w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
-=======
-                  <FaTwitter className="text-black w-5 h-5" />
-                </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
->>>>>>> master
                   Twitter
                 </span>
               </div>
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-<<<<<<< HEAD
                   <FaLinkedinIn className="text-[var(--main-color)] w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
-=======
-                  <FaLinkedinIn className="text-black w-5 h-5" />
-                </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
->>>>>>> master
                   LinkedIn
                 </span>
               </div>
 
               <div className="flex items-center gap-2 group cursor-pointer">
                 <span className="bg-white p-2 rounded-full">
-<<<<<<< HEAD
                   <FaYoutube className="text-[var(--main-color)] w-5 h-5" />
                 </span>
                 <span className="text-sm text-gray-200 group-hover:text-teal-400 transition-colors">
-=======
-                  <FaYoutube className="text-black w-5 h-5" />
-                </span>
-                <span className="text-gray-200 group-hover:text-teal-400 transition-colors">
->>>>>>> master
                   YouTube
                 </span>
               </div>
