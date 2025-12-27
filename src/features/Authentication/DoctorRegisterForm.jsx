@@ -1,12 +1,12 @@
 import React from "react";
 import { Form, useForm } from "react-hook-form";
 import FormInput from "./FormInput";
-import Doctor from "./FormRow";
 import FormRow from "./FormRow";
 import Button from "../../ui/Button";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import Select from "./Select";
 import { useSignup } from "./useSignUp";
+import { useDoctorRegister } from "../../Context/DoctorRegisterContext";
 const specializations = [
   "Cardiology",
   "Dermatology",
@@ -26,39 +26,38 @@ const specializations = [
   "Other",
 ];
 
+const genderOptions = ["male", "female", "other"];
+
 function DoctorRegisterForm({ onNext }) {
+  const { updateFormData, formData } = useDoctorRegister();
+
   const {
     register,
     handleSubmit,
     watch,
     getValues,
-    trigger,
     formState: { errors, isSubmitting },
-  } = useForm();
-
-  const { mutateAsync: signup, isLoading } = useSignup();
+  } = useForm({
+    defaultValues: formData.step1, //! this to pre-fill the form if the user goes back
+  });
 
   //! this watch comes from react hook form to watch the specialization field
   const selectedSpecialization = watch("specialization");
 
-  async function onSubmit(data) {
-    // try {
-    //   const res = await signup(data);
-    //   console.log("Doctor registered:", res);
-    //   onNext();
-    // } catch (error) {
-    //   console.error("Registration failed:", error);
-    // }
+  const selectedGender = watch("gender");
+
+  function onSubmit(data) {
+    updateFormData("step1", data);
     onNext();
   }
 
   return (
-    <div className="w-full h-[100vh] flex items-center justify-center flex-col">
+    <div className="w-full h-screen flex items-center justify-center flex-col">
       <h2 className="mb-5 flex  items-center justify-center font-bold text-3xl ">
         WELCOME DOCTOR 🥼
       </h2>
       <form
-        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto "
+        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[400px] overflow-auto md:h-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
         <FormRow>
@@ -71,7 +70,6 @@ function DoctorRegisterForm({ onNext }) {
             error={errors.firstName}
             validation={{ required: "First name is required" }}
           />
-
           <FormInput
             label="Last Name"
             name="lastName"
@@ -142,7 +140,7 @@ function DoctorRegisterForm({ onNext }) {
             validation={{ required: "Clinic Address is required" }}
           />
           {/* <FormInput
-            label="Start Time"
+            label="Sart Time"
             name="startTime"
             type="time"
             placeholder="Start Time"
@@ -151,6 +149,15 @@ function DoctorRegisterForm({ onNext }) {
             validation={{ required: "Start time is required" }}
           />
 
+          <FormInput
+            label="End Time"
+            name="endTime"
+            type="time"
+            placeholder="End Time"
+            register={register}
+            error={errors.endTime}
+            validation={{ required: "End time is required" }}
+          /> */}
           <FormInput
             label="Medical License Number"
             name="medicalLicenseNumber"
@@ -162,6 +169,15 @@ function DoctorRegisterForm({ onNext }) {
           />
         </FormRow>
         {/* we will make it combo box as a feature */}
+
+          <FormInput
+            label="Professional Bio (Optional)"
+            name="bio"
+            type="textarea"
+            placeholder="Tell us about your experience..."
+            register={register}
+            error={errors.bio}
+          />
         </FormRow>
         {/* Specialization Select */}
         <Select
@@ -169,6 +185,19 @@ function DoctorRegisterForm({ onNext }) {
           errors={errors}
           watch={watch}
           trigger={trigger}
+          DisableValue="Select Your Gender"
+          selectedGender={selectedGender}
+          label="Gender"
+          name="gender"
+          validation={{ required: "Gender is required" }}
+          options={genderOptions}
+        />
+        <Select
+          register={register}
+          errors={errors}
+          watch={watch}
+          trigger={trigger}
+          DisableValue="Select Your Specification"
           selectedSpecialization={selectedSpecialization}
           label="Specialization"
           name="specialization"

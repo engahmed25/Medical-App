@@ -11,7 +11,10 @@
   --main-padding-top: 80px;
   --main-padding-bottom: 80px;
   --sec-color: #fafafa;
+  
   --head-desc-color:rgb(88, 88, 88); 
+=======
+>>>>>>> master
 }
 * {
   -moz-box-sizing: border-box;

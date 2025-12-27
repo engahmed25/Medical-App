@@ -2,12 +2,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AppLayout from "./ui/AppLayout.jsx";
 import Home from "./ui/Home.jsx";
 import Register from "./pages/Register.jsx";
-import DoctorRegisterForm from "./features/Authentication/DoctorRegisterForm.jsx";
 import Login from "./pages/Login.jsx";
-import DoctorClinicInfo from "./pages/DoctorClinicInfo.jsx";
-import DoctorUploadFilesForm from "./features/Authentication/DoctorUploadFilesForm.jsx";
 import DoctorRegisterWizard from "./features/Authentication/DoctorRegisterWizard.jsx";
-import PatientRegisterForm from "./features/Authentication/PatientRegisterForm.jsx";
 import PatientRegisterFormWizard from "./features/Authentication/PatientRegisterFormWizard.jsx";
 import ContactUs from "./pages/ContactUs.jsx";
 import DrInfo from "./features/Appointments/DrInfo.jsx";
@@ -15,12 +11,33 @@ import { QueryClient } from "@tanstack/query-core";
 import { QueryClientProvider } from "@tanstack/react-query";
 import AllDoctors from "./pages/AllDoctors.jsx";
 import PatientDashboard from "./pages/PatientDashboard.jsx";
-import { Toaster } from "react-hot-toast";
-import DoctorCard from "./ui/DoctorCard.jsx";
-import AppointmentCard from './ui/AppointmentCard.jsx';
-import BookingSlots from "./features/Appointments/BookingSlot.jsx";
 
-const queryClient = new QueryClient();
+import MedicalHistory from "./features/Authentication/MedicalHistoryForm.jsx";
+import { Toaster } from "react-hot-toast";
+import Doctor from "./pages/Doctor.jsx";
+import MyAppointments from "./pages/MyAppointments.jsx";
+import DoctorDashBoard from "./pages/DoctorDashBoard.jsx";
+import PatientList from "./pages/PatientsList.jsx";
+import DashboardLayout from "./ui/DoctorDashBoardLayout.jsx";
+import { AuthProvider } from "react-auth-kit";
+import WaitAdminApproval from "./pages/WaitAdminApproval.jsx";
+import ProtectedRoute from "./features/Authentication/ProtectedRoutes.jsx";
+import Unauthorized from "./pages/Unauthorized.jsx";
+import ConsultingDoctors from "./pages/ConsultingDoctors.jsx";
+import UploadPatientsFiles from "./pages/UploadPatientsFiles.jsx";
+import EmailConfirmation from "./pages/EmailConfirmation.jsx";
+import ResetPassword from "./pages/ResetPassword.jsx";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+// import store from "./utils/authStore.js";
+// import * as authKit from "react-auth-kit";
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
@@ -37,12 +54,17 @@ const router = createBrowserRouter([
         path: "/contactus",
         element: <ContactUs />,
       },
+      {
+        path: "/doctor/:id",
+        element: <Doctor />,
+      },
+      {
+        path: "/appointments",
+        element: <MyAppointments />,
+      },
     ],
   },
-  {
-    path: "/patient/dashboard",
-    element: <PatientDashboard />,
-  },
+
   {
     path: "/register",
     element: <Register />,
@@ -62,31 +84,100 @@ const router = createBrowserRouter([
     element: <PatientRegisterFormWizard />,
   },
   {
-    path: "/patient/dashboard",
-    element: <PatientDashboard />,
+    path: "/patient/upload-files",
+    element: <UploadPatientsFiles />,
+  },
+  {
+    path: "/unauthorized",
+    element: <Unauthorized />,
+  },
+  // {
+  //   path: "/patient/dashboard",
+  //   element: (
+  //     <ProtectedRoute allowedRoles={["patient", "doctor"]}>
+  //       <PatientDashboard />
+  //     </ProtectedRoute>
+  //   ),
+  // },
+  {
+    path: "/patient/medical-history",
+    element: (
+      <ProtectedRoute allowedRoles={["patient", "doctor"]}>
+        <MedicalHistory />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/patient/medical-history",
+    element: <MedicalHistory />,
   },
   {
     path: "/doctor/info",
     element: <DrInfo />,
   },
   {
-    path: "/appointmentCard",
-    element: <AppointmentCard />,
+    path: "/forgot-password",
+    element: <EmailConfirmation />,
   },
   {
-    path: "/appointment/Booking",
-    element: <BookingSlots />,
+    path: "/reset-password",
+    element: <ResetPassword />,
+  },
+  {
+    path: "/wait",
+    element: <WaitAdminApproval />,
+  },
+
+  //! we need to reuse the layout for both doctor and patient dashboard
+  {
+    path: "/doctor",
+    element: (
+      <ProtectedRoute allowedRoles={["doctor"]}>
+        <DashboardLayout role="doctor" />
+      </ProtectedRoute>
+    ),
+    children: [
+      { path: "dashboard", element: <DoctorDashBoard /> },
+      { path: "patientList", element: <PatientList /> },
+    ],
+  },
+
+  {
+    path: "/patient",
+    element: (
+      <ProtectedRoute allowedRoles={["patient"]}>
+        <DashboardLayout role="patient" />
+      </ProtectedRoute>
+    ),
+    children: [{ path: "dashboard", element: <PatientDashboard /> }],
+  },
+  {
+    path: "/wait",
+    element: <WaitAdminApproval />,
+  },
+  {
+    path: "/consulting-doctors",
+    element: <ConsultingDoctors />,
   },
 ]);
 
 function App() {
+  // console.log("Available exports:", Object.keys(authKit));
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        {" "}
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-      <Toaster position="top-center" />
+      <AuthProvider
+        authType="cookie"
+        authName="_auth"
+        cookieDomain={window.location.hostname}
+        cookieSecure={window.location.protocol === "https:"}
+      >
+        <QueryClientProvider client={queryClient}>
+          {" "}
+          <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
+        </QueryClientProvider>
+        <Toaster position="top-center" />
+      </AuthProvider>
     </>
   );
 }

@@ -1,9 +1,29 @@
 import React, { useState } from "react";
+import { useAuthUser, useIsAuthenticated } from "react-auth-kit";
+import toast from "react-hot-toast";
+import LoginModal from "../Authentication/LoginModal";
 import Button from "../../ui/Button";
 
-export default function BookingSlots() {
+export default function BookingSlots({ id }) {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isAuthenticated = useIsAuthenticated();
+  const authUser = useAuthUser();
+  const user = authUser()?.user;
+
+  function handleBooking() {
+    if (!isAuthenticated()) {
+      setIsModalOpen(true);
+      toast("Login to book an appointment", {
+        icon: "⚠️",
+      });
+    }
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
 
   const dates = [
     { day: "MON", date: 10 },
@@ -27,14 +47,16 @@ export default function BookingSlots() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-8 ">
+    <div className="max-w-4xl p-8 ">
       <h2 className="text-3xl font-semibold text-[var(--head-desc-color)] text-center mb-6">
         Book an appointment
       </h2>
 
       {/* Date Selection */}
       <div className="mb-8">
-        <h3 className="text-m font-semibold text-[var(--head-desc-color)] mb-3">Select Date</h3>
+        <h3 className="text-m font-semibold text-[var(--head-desc-color)] mb-3">
+          Select Date
+        </h3>
         <div className="flex gap-3 flex-wrap pb-2">
           {dates.map((item, index) => (
             <Button
@@ -56,7 +78,7 @@ export default function BookingSlots() {
       {/* Time Selection */}
       <div className="mb-8">
         <h3 className="text-m font-semibold text-gray-700 mb-3">Select Time</h3>
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {times.map((time, index) => (
             <Button
               key={index}
@@ -73,17 +95,22 @@ export default function BookingSlots() {
         </div>
       </div>
 
-      
       <Button
+        onClick={handleBooking}
         disabled={selectedTime === null || selectedDate === null}
-        className={`w-full py-4 rounded-lg text-white font-semibold transition-all ${
-          (selectedTime === null || selectedDate === null)
+        className={`w-[80%] md:w-[50%] py-4 !rounded-[20px] text-white font-semibold transition-all ${
+          selectedTime === null || selectedDate === null
             ? "!bg-gray-300 cursor-not-allowed"
             : "!bg-(--main-lite-color) hover:!bg-(--main-color) "
         }`}
       >
-        Book Appointment
+        {isAuthenticated()
+          ? "Book Appointment"
+          : "You must be logged in to book"}
       </Button>
+
+      {/* Login Modal */}
+      <LoginModal isOpen={isModalOpen} onClose={closeModal} />
     </div>
   );
 }

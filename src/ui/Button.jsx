@@ -11,7 +11,19 @@ function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      type={type}
+9      type={type}
+      className={`
+        ${className} 
+        font-bold 
+        rounded-[var(--main-radius)]
+        ${withTransition ? "transition-colors duration-500" : ""}
+        ${
+          disabled
+            ? "!cursor-not-allowed bg-gray-400  opacity-50 pointer-events-none"
+            : "bg-[var(--main-color)] text-white cursor-pointer"
+        }
+        ${withHover && !disabled ? "hover:bg-[var(--main-lite-color)]" : ""}
+      `}
       className={`${className} bg-[var(--main-color)] text-white font-bold rounded-[var(--main-radius)] ${
         withTransition
           ? "transition-colors duration-500 cursor-pointer"
