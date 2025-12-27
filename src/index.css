@@ -4,15 +4,21 @@
 :root {
   --main-color: #014ed5;
   --main-lite-color: #014ed5d4;
+<<<<<<< HEAD
   --main-verylite-color:#eff6ff;
+=======
+>>>>>>> master
   --backGround-color: #d9d9d9;
   --main-transition: 0.3s;
   --main-radius: 10px;
   --main-padding-top: 80px;
   --main-padding-bottom: 80px;
   --sec-color: #fafafa;
+<<<<<<< HEAD
   
   --head-desc-color:rgb(88, 88, 88); 
+=======
+>>>>>>> master
 }
 * {
   -moz-box-sizing: border-box;

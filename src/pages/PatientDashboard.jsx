@@ -1,3 +1,4 @@
+import { LayoutDashboard, Calendar, FileText, MessageSquare, CreditCard, Upload, Settings, LogOut } from "lucide-react";
 import {
   Calendar,
   FileText,
@@ -159,6 +160,7 @@ export default function PatientDashboard() {
     },
   ];
 
+function PatientDashboard() {
   return (
     <div className="max-w-7xl mx-auto p-6">
       {/* Welcome Section */}
@@ -181,6 +183,7 @@ export default function PatientDashboard() {
             Book New
           </button>
         </div>
+      </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {appointments.map((appointment) => (
@@ -283,6 +286,6 @@ export default function PatientDashboard() {
           </button>
         </div>
       </div>
-    </div>
+    </PatientDashboardLayout>
   );
 }

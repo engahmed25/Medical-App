@@ -11,7 +11,7 @@ function Button({
     <button
       onClick={onClick}
       disabled={disabled}
-      type={type}
+9      type={type}
       className={`
         ${className} 
         font-bold 
@@ -24,6 +24,11 @@ function Button({
         }
         ${withHover && !disabled ? "hover:bg-[var(--main-lite-color)]" : ""}
       `}
+      className={`${className} bg-[var(--main-color)] text-white font-bold rounded-[var(--main-radius)] ${
+        withTransition
+          ? "transition-colors duration-500 cursor-pointer"
+          : "bg-gray-400 cursor-not-allowed"
+      } ${withHover ? "hover:bg-[var(--main-lite-color)]" : ""} `}
     >
       {children}
     </button>

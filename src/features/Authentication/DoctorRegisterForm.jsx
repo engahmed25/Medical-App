@@ -36,7 +36,6 @@ function DoctorRegisterForm({ onNext }) {
     handleSubmit,
     watch,
     getValues,
-    trigger,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: formData.step1, //! this to pre-fill the form if the user goes back
@@ -58,7 +57,7 @@ function DoctorRegisterForm({ onNext }) {
         WELCOME DOCTOR 🥼
       </h2>
       <form
-        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[77%] overflow-auto w-[90%] md:w-auto "
+        className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] p-12 rounded-2xl h-[400px] overflow-auto md:h-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
         <FormRow>
@@ -71,7 +70,6 @@ function DoctorRegisterForm({ onNext }) {
             error={errors.firstName}
             validation={{ required: "First name is required" }}
           />
-
           <FormInput
             label="Last Name"
             name="lastName"
@@ -142,7 +140,7 @@ function DoctorRegisterForm({ onNext }) {
             validation={{ required: "Clinic Address is required" }}
           />
           {/* <FormInput
-            label="Start Time"
+            label="Sart Time"
             name="startTime"
             type="time"
             placeholder="Start Time"
@@ -151,6 +149,15 @@ function DoctorRegisterForm({ onNext }) {
             validation={{ required: "Start time is required" }}
           />
 
+          <FormInput
+            label="End Time"
+            name="endTime"
+            type="time"
+            placeholder="End Time"
+            register={register}
+            error={errors.endTime}
+            validation={{ required: "End time is required" }}
+          /> */}
           <FormInput
             label="Medical License Number"
             name="medicalLicenseNumber"

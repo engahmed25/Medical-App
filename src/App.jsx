@@ -108,6 +108,10 @@ const router = createBrowserRouter([
     ),
   },
   {
+    path: "/patient/medical-history",
+    element: <MedicalHistory />,
+  },
+  {
     path: "/doctor/info",
     element: <DrInfo />,
   },

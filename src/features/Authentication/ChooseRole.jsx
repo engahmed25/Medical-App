@@ -1,9 +1,14 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { Link, useNavigate } from "react-router-dom";
+=======
+import { Link } from "react-router-dom";
+>>>>>>> master
 import Button from "../../ui/Button";
 
 function ChooseRole() {
   const [chooseRole, setChooseRole] = useState(null);
+<<<<<<< HEAD
   const navigate = useNavigate();
 
   function handleRegister() {
@@ -13,6 +18,8 @@ function ChooseRole() {
       navigate("/register/patients?step=1");
     }
   }
+=======
+>>>>>>> master
 
   return (
     <div className=" flex flex-col items-center justify-center min-h-screen gap-6">
@@ -61,7 +68,11 @@ function ChooseRole() {
           withHover={chooseRole !== null}
           className={`py-4 px-10 mb-2`}
           disabled={chooseRole === null}
+<<<<<<< HEAD
           onClick={handleRegister}
+=======
+          onClick={() => {}}
+>>>>>>> master
         >
           {chooseRole === null
             ? "Create Account"

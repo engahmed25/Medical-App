@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import Header from "./Header";
 import Hero from "./Hero";
@@ -12,6 +13,10 @@ function Home() {
       <DrCardList />
     </>
   );
+=======
+function Home() {
+  return <div>Home</div>;
+>>>>>>> master
 }
 
 export default Home;
