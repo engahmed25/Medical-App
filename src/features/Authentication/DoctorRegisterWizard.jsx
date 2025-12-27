@@ -3,7 +3,7 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import DoctorRegisterForm from "./DoctorRegisterForm";
 import DoctorUploadFilesForm from "./DoctorUploadFilesForm";
 import DoctorClinicForm from "./DoctorClinicForm";
-import { DoctorRegisterProvider } from "../../../Context/DoctorRegisterContext";
+import { DoctorRegisterProvider } from "../../Context/DoctorRegisterContext";
 
 function DoctorRegisterWizard() {
   const [searchParams, setSearchParams] = useSearchParams();

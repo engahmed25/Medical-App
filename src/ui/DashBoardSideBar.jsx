@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 // DashBoardSideBar Component
 function DashBoardSideBar({
-  //   menuItems = [],
+  menuItems = [],
   user = { name: "User", role: "Role" },
 }) {
   const [activeItem, setActiveItem] = useState("Dashboard");
@@ -19,13 +19,13 @@ function DashBoardSideBar({
 
   const navigate = useNavigate();
 
-  const menuItems = [
-    { icon: LayoutDashboard, label: "Dashboard", path: "/doctor/dashboard" },
-    { icon: Users, label: "Patients", path: "/doctor/patientList" },
-    { icon: Calendar, label: "Calendar", path: "/doctor/calendar" },
-    { icon: MessageSquare, label: "Messages", path: "/doctor/messages" },
-    { icon: Settings, label: "Settings", path: "/doctor/settings" },
-  ];
+  // const menuItems = [
+  //   { icon: LayoutDashboard, label: "Dashboard", path: "/doctor/dashboard" },
+  //   { icon: Users, label: "Patients", path: "/doctor/patientList" },
+  //   { icon: Calendar, label: "Calendar", path: "/doctor/calendar" },
+  //   { icon: MessageSquare, label: "Messages", path: "/doctor/messages" },
+  //   { icon: Settings, label: "Settings", path: "/doctor/settings" },
+  // ];
 
   return (
     <div
