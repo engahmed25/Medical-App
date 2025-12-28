@@ -11,10 +11,7 @@
   --main-padding-top: 80px;
   --main-padding-bottom: 80px;
   --sec-color: #fafafa;
-  
-  --head-desc-color:rgb(88, 88, 88); 
-=======
->>>>>>> master
+  --head-desc-color: rgb(88, 88, 88);
 }
 * {
   -moz-box-sizing: border-box;
