@@ -7,7 +7,7 @@ import {
   Settings,
   User,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // DashBoardSideBar Component
 function DashBoardSideBar({
@@ -42,15 +42,17 @@ function DashBoardSideBar({
         }`}
       >
         <div className={`flex items-center gap-3 `}>
-          <img src="/logo.png" alt="Logo" className="w-8 h-8" />
-          <div>
-            {isOpen && (
-              <>
-                <h1 className="text-lg font-bold text-gray-900">MAIO</h1>
-                <p className="text-sm text-gray-500">Doctor's Portal</p>
-              </>
-            )}
-          </div>
+          <Link to={"/"}>
+            <img src="/logo.png" alt="Logo" className="w-8 h-8" />
+            <div>
+              {isOpen && (
+                <>
+                  <h1 className="text-lg font-bold text-gray-900">MAIO</h1>
+                  <p className="text-sm text-gray-500">Doctor's Portal</p>
+                </>
+              )}
+            </div>
+          </Link>
         </div>
       </div>
 
