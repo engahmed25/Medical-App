@@ -11,6 +11,8 @@ export default function Header() {
   const auth = useAuthUser();
   const user = auth()?.user;
 
+  const baseUrl = import.meta.env.VITE_BACKEND_URL;
+
   console.log("Header render - Authenticated user:", user);
 
   return (
@@ -55,7 +57,7 @@ transition-all duration-300 hover:scale-110 hover:text-[var(--main-color)]"
         <div className="hidden md:flex items-center gap-4">
           {isAuthenticated() ? (
             <UserButton
-              profilePicture={user?.profilePicture}
+              profilePicture={`${baseUrl}/${user?.profilePicture}`}
               role={user?.role}
               userName={`${user?.firstName} ${user?.lastName}`}
             />
